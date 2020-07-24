@@ -1,0 +1,2 @@
+Parse /p 211 /w 1 /s "C:\A\vs2019mb-000030-1\_work\21\a\MicroBuild\Plugins\MicroBuild.Plugins.Localization.1.0.926\build\\LSBuild\6.11.2218.0\default.lss" /vc "C:\A\vs2019mb-000030-1\_work\21\s\src\MSBuild\Xamarin.iOS.Tasks\bin\Release\Xamarin.iOS.Tasks.dll.lce" /o "C:\A\vs2019mb-000030-1\_work\21\s\src\MSBuild\Xamarin.iOS.Tasks\bin\Release\localize\ENU\Xamarin.iOS.Tasks.dll.lcg" "C:\A\vs2019mb-000030-1\_work\21\s\src\MSBuild\Xamarin.iOS.Tasks\bin\Release\Xamarin.iOS.Tasks.dll"
+

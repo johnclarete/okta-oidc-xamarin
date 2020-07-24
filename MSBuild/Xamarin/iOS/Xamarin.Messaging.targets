@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<UsingTask TaskName="Xamarin.Messaging.Tasks.GenerateBuildSessionId" AssemblyFile="Xamarin.Messaging.Tasks.dll" />
+	<UsingTask TaskName="Xamarin.Messaging.Tasks.VerifyBuildSignature" AssemblyFile="Xamarin.Messaging.Tasks.dll" />
+	<UsingTask TaskName="Xamarin.Messaging.Tasks.VerifyXcodeVersion" AssemblyFile="Xamarin.Messaging.Tasks.dll" />
+	<UsingTask TaskName="Xamarin.Messaging.Tasks.SayHello" AssemblyFile="Xamarin.Messaging.Tasks.dll" />
+	<UsingTask TaskName="Xamarin.Messaging.Tasks.SayGoodbye" AssemblyFile="Xamarin.Messaging.Tasks.dll" />
+	<PropertyGroup>
+		<BuildDependsOn>
+			_SayHello;
+			_VerifyBuildSignature;
+			_VerifyXcodeVersion;
+			AfterConnect;
+			$(BuildDependsOn);
+			BeforeDisconnect;
+			_SayGoodbye;
+		</BuildDependsOn>
+		<BuildSignatureDirectory Condition="'$(BuildSignatureDirectory)' == ''">$(IntermediateOutputPath)build-signature\</BuildSignatureDirectory>
+		<BuildSignatureDirectory Condition="!HasTrailingSlash('$(BuildSignatureDirectory)')">$(BuildSignatureDirectory)\</BuildSignatureDirectory>
+		<BuildSignatureFile>$(BuildSignatureDirectory)signature</BuildSignatureFile>
+		<!-- By default, we don't want to warn about offline builds for class libraries, which typically don't require a connection -->
+		<WarnOfflineBuild Condition="'$(WarnOfflineBuild)' == '' and '$(OutputType)' == 'Library' and '$(XamarinOutputType)' != 'Binding'">false</WarnOfflineBuild>
+		<WarnOfflineBuild Condition="'$(WarnOfflineBuild)' == ''">true</WarnOfflineBuild>
+		<NoWarn Condition="'$(WarnOfflineBuild)' == 'false'">$(NoWarn);VSX1000</NoWarn>
+	</PropertyGroup>
+	<!-- AfterConnect: Redefine this target in your project in order to run tasks just after the XMA connection is performed -->
+	<Target Name="AfterConnect" />
+	<!-- BeforeDisconnect: Redefine this target in your project in order to run tasks just before the XMA disconnection happens -->
+	<Target Name="BeforeDisconnect" />
+	<Target Name="_GenerateBuildSessionId">
+		<GenerateBuildSessionId ProjectFullPath="$(MSBuildProjectFullPath)" ProjectName="$(MSBuildProjectName)">
+			<Output TaskParameter="BuildSessionId" PropertyName="BuildSessionId" />
+			<Output TaskParameter="BuildAppName" PropertyName="BuildAppName" />
+		</GenerateBuildSessionId>
+	</Target>
+	<Target Name="_SayHello" DependsOnTargets="_GenerateBuildSessionId" BeforeTargets="_CleanDebugSymbols;_CleanAppBundle;_DetectAppManifest;_DetectSdkLocations;">
+		<PropertyGroup>
+			<GenerateCache Condition=" '$(GenerateCache)' == '' And '$(BuildingInsideVisualStudio)' == 'true' ">true</GenerateCache>
+			<GenerateCache Condition=" '$(GenerateCache)' == '' And '$(BuildingInsideVisualStudio)' != 'true' ">false</GenerateCache>
+		</PropertyGroup>
+		<PropertyGroup>
+			<ContinueOnDisconnected Condition="'$(ContinueOnDisconnected)' == ''">true</ContinueOnDisconnected>
+		</PropertyGroup>
+
+		<Message Importance="high" Condition="'$(IsHotRestartBuild)' != 'true'" Text="Executing SayHello Task to establish a connection to a Mac Server. 
+						 Properties: SessionId=$(BuildSessionId), 
+							ServerPort=$(ServerPort), 
+							ServerAddress=$(ServerAddress), 
+							ServerUser=$(ServerUser), 
+							ServerPassword=$(ServerPassword), 
+							SSHKey=$(SSHKey), 
+							SSHPassPhrase=$(SSHPassPhrase),
+							AppName=$(BuildAppName),
+							ContinueOnDisconnected=$(ContinueOnDisconnected)" />
+
+		<SayHello SessionId="$(BuildSessionId)" 
+				  IntermediateDir="$(IntermediateOutputPath)build_package\" 
+				  ServerPort="$(ServerPort)" 
+				  MtbsBuildsPath="~/Library/Caches/Xamarin/mtbs/builds" 
+				  ServerAddress="$(ServerAddress)" 
+				  ServerUser="$(ServerUser)" 
+				  ServerPassword="$(ServerPassword)" 
+				  SSHKey="$(SSHKey)" 
+				  SSHPassPhrase="$(SSHPassPhrase)" 
+				  AppName="$(BuildAppName)" 
+				  GenerateCache="$(GenerateCache)" 
+				  ProjectDirectory="$(MSBuildProjectDirectory)" 
+				  ContinueOnDisconnected="$(ContinueOnDisconnected)"
+				  BuildingInsideVisualStudio="$(BuildingInsideVisualStudio)"
+				  NoWarn="$(NoWarn)"
+				  IsLocalDevice="$(IsHotRestartBuild)">
+			<Output TaskParameter="IsBuildServerAvailable" PropertyName="MtouchTargetsEnabled" />
+			<Output TaskParameter="IsBuildServerAvailable" PropertyName="IsMacEnabled" />
+			<Output TaskParameter="MacBuildPath" PropertyName="MacBuildPath" />
+		</SayHello>
+		<PropertyGroup>
+			<MtouchProjectFullPath>$(MacBuildPath)/$(MSBuildProjectFile)</MtouchProjectFullPath>
+		</PropertyGroup>
+	</Target>
+	<Target Name="_VerifyBuildSignature">
+		<VerifyBuildSignature SessionId="$(BuildSessionId)" SignatureDirectory="$(BuildSignatureDirectory)">
+			<Output TaskParameter="IsValidSignature" PropertyName="IsValidSignature" />
+		</VerifyBuildSignature>
+		<MSBuild Condition="'$(IsValidSignature)' != 'true'" Projects="$(MSBuildProjectFile)" Targets="Clean" Properties="Configuration=$(Configuration); Platform=$(Platform); BuildProjectReferences=false"></MSBuild>
+	</Target>
+	<Target Name="_VerifyXcodeVersion">
+		<VerifyXcodeVersion SessionId="$(BuildSessionId)" />
+	</Target>
+	<Target Name="_SayGoodbye">
+		<SayGoodbye Condition="'$(IsMacEnabled)' == 'true'"
+					SessionId="$(BuildSessionId)"
+					SignatureFile="$(BuildSignatureFile)" 
+					BuildingInsideVisualStudio="$(BuildingInsideVisualStudio)" 
+					AppBundleDir="$(AppBundleDir)" 
+					OutputPath="$(OutputPath)" 
+					DeviceSpecificOutputPath="$(DeviceSpecificOutputPath)" />
+		<ItemGroup>
+			<FileWrites Include="$(BuildSignatureFile)" />
+		</ItemGroup>
+	</Target>
+</Project>

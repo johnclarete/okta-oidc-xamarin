@@ -1,0 +1,42 @@
+{
+  "DateTime": "0001-01-01T00:00:00",
+  "BuildSystem": "Microbuild V2",
+  "SourceControl": {
+    "Type": "GitHub",
+    "Url": "https://github.com/xamarin/XamarinVS",
+    "Branch": "d16-6",
+    "Repository": "XamarinVS"
+  },
+  "LanguageSets": [],
+  "Projects": [
+    {
+      "Name": "Xamarin.iOS.Tasks",
+      "Path": "src\\MSBuild\\Xamarin.iOS.Tasks\\Xamarin.iOS.Tasks.csproj",
+      "LocItems": [
+        {
+          "SourceFile": "src\\MSBuild\\Xamarin.iOS.Tasks\\bin\\Release\\Xamarin.iOS.Tasks.dll",
+          "LclFile": "loc\\lcl\\{Lang}\\Xamarin.iOS.Tasks.dll.lcl",
+          "LcgFile": "src\\MSBuild\\Xamarin.iOS.Tasks\\bin\\Release\\localize\\ENU\\Xamarin.iOS.Tasks.dll.lcg",
+          "Languages": "CHS;CHT;CSY;DEU;ESN;FRA;ITA;JPN;KOR;PLK;PTB;RUS;TRK",
+          "CopyOption": "None"
+        }
+      ],
+      "LssFiles": []
+    }
+  ],
+  "LanguageFolderMappings": {
+    "CHS": "zh-CN",
+    "CHT": "zh-TW",
+    "CSY": "cs-CZ",
+    "DEU": "de-DE",
+    "ESN": "es-ES",
+    "FRA": "fr-FR",
+    "ITA": "it-IT",
+    "JPN": "ja-JP",
+    "KOR": "ko-KR",
+    "PLK": "pl-PL",
+    "PTB": "pt-BR",
+    "RUS": "ru-RU",
+    "TRK": "tr-TR"
+  }
+}

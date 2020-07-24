@@ -1,0 +1,18 @@
+<!--
+***********************************************************************************************
+Xamarin.TVOS.Common.After.targets
+
+WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and have
+  created a backup copy.  Incorrect changes to this file will make it
+  impossible to load or build your projects from the command-line or the IDE.
+
+Copyright (C) 2011-2013 Xamarin. All rights reserved.
+***********************************************************************************************
+-->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<!-- Allows providing SDK-specific target overrides -->
+	<PropertyGroup>
+		<XamarinAppleSdkTargets>$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), 'Xamarin.Apple.Sdk.targets'))\Xamarin.Apple.Sdk.targets</XamarinAppleSdkTargets>
+	</PropertyGroup>
+	<Import Project="$(XamarinAppleSdkTargets)" Condition="'$(XamarinAppleSdkTargetsImported)' != 'true' And Exists('$(XamarinAppleSdkTargets)')"/>
+</Project>

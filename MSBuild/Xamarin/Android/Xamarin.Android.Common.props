@@ -1,0 +1,47 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<XamarinAndroidVersion>10.3.1-4</XamarinAndroidVersion>
+		<_JavaInteropReferences>Java.Interop;System.Runtime</_JavaInteropReferences>
+		<Debugger Condition=" '$(Debugger)' == '' ">Xamarin</Debugger>
+		<DependsOnSystemRuntime Condition=" '$(DependsOnSystemRuntime)' == '' ">true</DependsOnSystemRuntime>
+		<ImplicitlyExpandNETStandardFacades>false</ImplicitlyExpandNETStandardFacades>
+		<CopyNuGetImplementations Condition=" '$(CopyNuGetImplementations)' == ''">true</CopyNuGetImplementations>
+		<YieldDuringToolExecution Condition="'$(YieldDuringToolExecution)' == ''">true</YieldDuringToolExecution>
+		<LatestSupportedJavaVersion Condition="'$(LatestSupportedJavaVersion)' == ''">1.8.0</LatestSupportedJavaVersion>
+		<MinimumSupportedJavaVersion Condition="'$(MinimumSupportedJavaVersion)' == ''">1.6.0</MinimumSupportedJavaVersion>
+		<AndroidVersionCodePattern Condition=" '$(AndroidUseLegacyVersionCode)' != 'True' And '$(AndroidVersionCodePattern)' == '' ">{abi}{versionCode:D5}</AndroidVersionCodePattern>
+		<AndroidResourceGeneratorTargetName>UpdateGeneratedFiles</AndroidResourceGeneratorTargetName>
+		<AndroidUseAapt2 Condition=" '$(AndroidUseAapt2)' == '' ">True</AndroidUseAapt2>
+		<AndroidPackageNamingPolicy Condition=" '$(AndroidPackageNamingPolicy)' == '' ">LowercaseCrc64</AndroidPackageNamingPolicy>
+		<AndroidUseManagedDesignTimeResourceGenerator Condition=" '$(AndroidUseManagedDesignTimeResourceGenerator)' == '' And '$(OS)' != 'Windows_NT' ">False</AndroidUseManagedDesignTimeResourceGenerator>
+		<AndroidSdkBuildToolsVersion Condition="'$(AndroidSdkBuildToolsVersion)' == ''">29.0.2</AndroidSdkBuildToolsVersion>
+		<AndroidSdkPlatformToolsVersion Condition="'$(AndroidSdkPlatformToolsVersion)' == ''">29.0.5</AndroidSdkPlatformToolsVersion>
+		<AndroidSdkToolsVersion Condition="'$(AndroidSdkToolsVersion)' == ''">26.1.1</AndroidSdkToolsVersion>
+		<AndroidNdkVersion Condition="'$(AndroidNdkVersion)' == ''">16.1</AndroidNdkVersion>
+		<BundleToolVersion Condition="'$(BundleToolVersion)' == ''">0.10.2</BundleToolVersion>
+		<_XamarinAndroidMSBuildDirectory>$(MSBuildThisFileDirectory)</_XamarinAndroidMSBuildDirectory>
+
+		<!-- Enable nuget package conflict resolution -->
+		<ResolveAssemblyConflicts>true</ResolveAssemblyConflicts>
+	</PropertyGroup>
+	<ItemDefinitionGroup>
+		<AndroidResource>
+			<SubType>Designer</SubType>
+			<Generator>MSBuild:UpdateGeneratedFiles</Generator>
+		</AndroidResource>
+	</ItemDefinitionGroup>
+        <ItemGroup>
+          <AndroidMinimumSupportedApiLevel Include="armeabi-v7a">
+            <ApiLevel>16</ApiLevel>
+          </AndroidMinimumSupportedApiLevel>
+          <AndroidMinimumSupportedApiLevel Include="arm64-v8a">
+            <ApiLevel>21</ApiLevel>
+          </AndroidMinimumSupportedApiLevel>
+          <AndroidMinimumSupportedApiLevel Include="x86">
+            <ApiLevel>16</ApiLevel>
+          </AndroidMinimumSupportedApiLevel>
+          <AndroidMinimumSupportedApiLevel Include="x86_64">
+            <ApiLevel>21</ApiLevel>
+          </AndroidMinimumSupportedApiLevel>
+        </ItemGroup>
+</Project>

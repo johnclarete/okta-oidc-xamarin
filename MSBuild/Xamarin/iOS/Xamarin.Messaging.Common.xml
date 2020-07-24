@@ -1,0 +1,527 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xamarin.Messaging.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Xamarin.Messaging.TestMessage">
+            <summary>
+            Test message to simulate some work (input, execution and output)
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.TestMessage.DelayResponse">
+            <summary>
+            Gets or sets the time (in milliseconds) that the response should be delayed
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.TestMessage.Data">
+            <summary>
+            Gets or sets the byte array payload
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.TestMessage.ResponsePayloadSize">
+            <summary>
+            Gets or sets the size of the payload that should be created in the reponse
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.TestResult">
+            <summary>
+            Represents the result of <see cref="T:Xamarin.Messaging.TestMessage"/>
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Diagnostics.SystemTraceExtensions">
+            <summary>
+            Provides additional tracing extensions for issuing system-visibile
+            traces.
+            </summary>
+            <devdoc>
+            The system-visible traces are always done prepending the
+            "$" character to denote that it's a message for the system traces.
+            The corresponding trace listeners (i.e. the one that outputs to the
+            output window) will filter all traces and only output those that
+            start with that character.
+            </devdoc>
+        </member>
+        <member name="F:Xamarin.Messaging.Diagnostics.SystemTraceExtensions.MessagePrefix">
+            <summary>
+            The message prefix used to signal system visible messages.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.SystemTraceExtensions.SystemError(System.Diagnostics.ITracer,System.Object)">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Error"/> with the given message;
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.SystemTraceExtensions.SystemError(System.Diagnostics.ITracer,System.String,System.Object[])">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Error"/> with the given format string and arguments.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.SystemTraceExtensions.SystemError(System.Diagnostics.ITracer,System.Exception,System.Object)">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Error"/> with the given exception and message.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.SystemTraceExtensions.SystemError(System.Diagnostics.ITracer,System.Exception,System.String,System.Object[])">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Error"/> with the given exception, format string and arguments.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.SystemTraceExtensions.SystemWarn(System.Diagnostics.ITracer,System.Object)">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Warning"/> with the given message;
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.SystemTraceExtensions.SystemWarn(System.Diagnostics.ITracer,System.String,System.Object[])">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Warning"/> with the given format string and arguments.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.SystemTraceExtensions.SystemWarn(System.Diagnostics.ITracer,System.Exception,System.Object)">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Warning"/> with the given exception and message.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.SystemTraceExtensions.SystemWarn(System.Diagnostics.ITracer,System.Exception,System.String,System.Object[])">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Warning"/> with the given exception, format string and arguments.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.SystemTraceExtensions.SystemInfo(System.Diagnostics.ITracer,System.Object)">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Information"/> with the given message;
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.SystemTraceExtensions.SystemInfo(System.Diagnostics.ITracer,System.String,System.Object[])">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Information"/> with the given format string and arguments.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.SystemTraceExtensions.SystemInfo(System.Diagnostics.ITracer,System.Exception,System.Object)">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Information"/> with the given exception and message.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.SystemTraceExtensions.SystemInfo(System.Diagnostics.ITracer,System.Exception,System.String,System.Object[])">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Information"/> with the given exception, format string and arguments.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.SystemTraceExtensions.StartSystemActivity(System.Diagnostics.ITracer,System.String,System.Object[])">
+            <summary>
+            Starts a new activity scope.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.SystemTraceExtensions.StartSystemActivity(System.Diagnostics.ITracer,System.String)">
+            <summary>
+            Starts a new activity scope.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Diagnostics.UserTraceExtensions">
+            <summary>
+            Provides additional tracing extensions for issuing user-visibile
+            traces.
+            </summary>
+            <devdoc>
+            The user-visible traces are always done prepending the
+            "!" character to denote that it's a message for the user traces.
+            The corresponding trace listeners (i.e. the one that outputs to the
+            output window) will filter all traces and only output those that
+            start with that character. This allows the components to
+            freely trace both diagnostic-level messages in addition to user-visible
+            ones, using the same API. The User* overloads will still trace to
+            the normal traces (i.e. UserInfo does Info too).
+            This also means that the system listeners need to filter out those
+            messages with the given starting "!" character, to avoid duplicates.
+            </devdoc>
+        </member>
+        <member name="F:Xamarin.Messaging.Diagnostics.UserTraceExtensions.MessagePrefix">
+            <summary>
+            The message prefix used to signal user visible messages.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.UserTraceExtensions.UserError(System.Diagnostics.ITracer,System.Object)">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Error"/> with the given message;
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.UserTraceExtensions.UserError(System.Diagnostics.ITracer,System.String,System.Object[])">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Error"/> with the given format string and arguments.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.UserTraceExtensions.UserError(System.Diagnostics.ITracer,System.Exception,System.Object)">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Error"/> with the given exception and message.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.UserTraceExtensions.UserError(System.Diagnostics.ITracer,System.Exception,System.String,System.Object[])">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Error"/> with the given exception, format string and arguments.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.UserTraceExtensions.UserWarn(System.Diagnostics.ITracer,System.Object)">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Warning"/> with the given message;
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.UserTraceExtensions.UserWarn(System.Diagnostics.ITracer,System.String,System.Object[])">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Warning"/> with the given format string and arguments.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.UserTraceExtensions.UserWarnConditional(System.Diagnostics.ITracer,System.Boolean,System.String,System.Object[])">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Warning"/> with the given format string and arguments.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.UserTraceExtensions.UserWarn(System.Diagnostics.ITracer,System.Exception,System.Object)">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Warning"/> with the given exception and message.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.UserTraceExtensions.UserWarnConditional(System.Diagnostics.ITracer,System.Boolean,System.Exception,System.Object)">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Warning"/> with the given exception and message.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.UserTraceExtensions.UserWarn(System.Diagnostics.ITracer,System.Exception,System.String,System.Object[])">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Warning"/> with the given exception, format string and arguments.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.UserTraceExtensions.UserInfo(System.Diagnostics.ITracer,System.Object)">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Information"/> with the given message;
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.UserTraceExtensions.UserInfo(System.Diagnostics.ITracer,System.String,System.Object[])">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Information"/> with the given format string and arguments.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.UserTraceExtensions.UserInfo(System.Diagnostics.ITracer,System.Exception,System.Object)">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Information"/> with the given exception and message.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.UserTraceExtensions.UserInfo(System.Diagnostics.ITracer,System.Exception,System.String,System.Object[])">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Information"/> with the given exception, format string and arguments.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.UserTraceExtensions.UserVerbose(System.Diagnostics.ITracer,System.Object)">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Information"/> with the given message;
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.UserTraceExtensions.UserVerbose(System.Diagnostics.ITracer,System.String,System.Object[])">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Information"/> with the given format string and arguments.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.UserTraceExtensions.UserVerbose(System.Diagnostics.ITracer,System.Exception,System.Object)">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Information"/> with the given exception and message.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.UserTraceExtensions.UserVerbose(System.Diagnostics.ITracer,System.Exception,System.String,System.Object[])">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Information"/> with the given exception, format string and arguments.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.UserTraceExtensions.UserCritical(System.Diagnostics.ITracer,System.Object)">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Information"/> with the given message;
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.UserTraceExtensions.UserCritical(System.Diagnostics.ITracer,System.String,System.Object[])">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Information"/> with the given format string and arguments.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.UserTraceExtensions.UserCritical(System.Diagnostics.ITracer,System.Exception,System.Object)">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Information"/> with the given exception and message.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.UserTraceExtensions.UserCritical(System.Diagnostics.ITracer,System.Exception,System.String,System.Object[])">
+            <summary>
+            Traces an event of type <see cref="F:System.Diagnostics.TraceEventType.Information"/> with the given exception, format string and arguments.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.UserTraceExtensions.StartUserActivity(System.Diagnostics.ITracer,System.String,System.Object[])">
+            <summary>
+            Starts a new activity scope.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Diagnostics.UserTraceExtensions.StartUserActivity(System.Diagnostics.ITracer,System.String)">
+            <summary>
+            Starts a new activity scope.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.ListLogFilesMessage">
+            <summary>
+            Requests Mac agents and broker to list their log 
+            file names. The Mac handlers will send in turn 
+            <see cref="!:MacLogFileMessage"/> messages that 
+            need to be handled by the Windows side that requested 
+            the asynchronous listing. This message should be 
+            just sent, not posted since its reply is irrelevant.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Properties.Resources.ByteExtensions_InvalidBitPosition">
+            <summary>
+              Looks up a localized string similar to Bit position must be between 0 and 7.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Properties.Resources.ByteExtensions_InvalidByteIndex">
+            <summary>
+              Looks up a localized string similar to Byte index must be from 1 to 8, starting from msb.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Properties.Resources.MessageTypeExtensions_Topic_NotSpecified">
+            <summary>
+              Looks up a localized string similar to The contract &apos;{0}&apos; does not specify the topic attribute.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Properties.Resources.MessageTypeExtensions_TopicName_NotSpecified">
+            <summary>
+              Looks up a localized string similar to The contract &apos;{0}&apos; does not specify the topic name in the attribute.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Properties.Resources.MessagingConstants_LastWillMessage">
+            <summary>
+              Looks up a localized string similar to The Client {0} has been disconnected unexpectedly.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Properties.Resources.ProcessExtensions_AlreadyRunning">
+            <summary>
+              Looks up a localized string similar to The process is already running.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Properties.Resources.ReceiverNotFoundException_Message">
+            <summary>
+              Looks up a localized string similar to No receiver was found for topic {0}.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Properties.Strings">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Properties.Strings.ByteExtensions">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Properties.Strings.ByteExtensions.InvalidBitPosition">
+            <summary>
+            Looks up a localized string similar to: 
+            Bit position must be between 0 and 7
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Properties.Strings.ByteExtensions.InvalidByteIndex">
+            <summary>
+            Looks up a localized string similar to: 
+            Byte index must be from 1 to 8, starting from msb
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Properties.Strings.MessageTypeExtensions">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Properties.Strings.MessageTypeExtensions.TopicName">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Properties.Strings.MessageTypeExtensions.TopicName.NotSpecified(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            The contract '{0}' does not specify the topic name in the attribute
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Properties.Strings.MessageTypeExtensions.Topic">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Properties.Strings.MessageTypeExtensions.Topic.NotSpecified(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            The contract '{0}' does not specify the topic attribute
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Properties.Strings.MessagingConstants">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Properties.Strings.MessagingConstants.LastWillMessage(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            The Client {0} has been disconnected unexpectedly
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Properties.Strings.ProcessExtensions">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Properties.Strings.ProcessExtensions.AlreadyRunning">
+            <summary>
+            Looks up a localized string similar to: 
+            The process is already running
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Properties.Strings.ReceiverNotFoundException">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Properties.Strings.ReceiverNotFoundException.Message(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            No receiver was found for topic {0}
+            </summary>
+        </member>
+        <member name="F:Xamarin.Versions.Messaging.Major">
+            <summary>Major: 1</summary>
+        </member>
+        <member name="F:Xamarin.Versions.Messaging.Minor">
+            <summary>Minor: 1</summary>
+        </member>
+        <member name="F:Xamarin.Versions.Messaging.Build">
+            <summary>Build: 6</summary>
+        </member>
+        <member name="F:Xamarin.Versions.Messaging.Revision">
+            <summary>Revision: 284</summary>
+        </member>
+        <member name="F:Xamarin.Versions.Messaging.Commit">
+            <summary>Commit: 41e1f0e</summary>
+        </member>
+        <member name="T:Xamarin.ThisAssembly">
+            <summary>Provides access to the current assembly information.</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.SimpleVersion">
+            <summary>
+            Simple release-like version number, like 4.0.1 for a cycle 5, SR1 build.
+            </summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Version">
+            <summary>
+            Full version, including commits since base version file, like 4.0.1.598
+            </summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.InformationalVersion">
+            <summary>
+            Full version, plus branch and commit short sha.
+            </summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Project.RootNamespace">
+            <summary>RootNamespace: Xamarin.Messaging</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Project.AssemblyName">
+            <summary>AssemblyName: Xamarin.Messaging.Common</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Project.ProjectGuid">
+            <summary>ProjectGuid: {26BA3296-4DAD-449F-9DCB-E817B689D6FF}</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Project.RootSuffix">
+            <summary>RootSuffix: </summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Project.TargetFrameworkVersion">
+            <summary>TargetFrameworkVersion: v4.7.2</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Project.TargetFrameworkIdentifier">
+            <summary>TargetFrameworkIdentifier: .NETFramework</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Project.TargetFrameworkMoniker">
+            <summary>TargetFrameworkMoniker: .NETFramework,Version=v4.7.2</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Project.TargetPlatformVersion">
+            <summary>TargetPlatformVersion: 7.0</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Project.TargetPlatformIdentifier">
+            <summary>TargetPlatformIdentifier: Windows</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Project.TargetPlatformMoniker">
+            <summary>TargetPlatformMoniker: Windows,Version=7.0</summary>
+        </member>
+        <member name="T:Xamarin.ThisAssembly.Git">
+            <summary>Provides access to the git information for the current assembly.</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.IsDirty">
+            <summary>IsDirty: true</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.Branch">
+            <summary>Branch: d16-6</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.Commit">
+            <summary>Commit: 41e1f0e</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.Sha">
+            <summary>Sha: 41e1f0ea445d9e1e8ee4edca529775d90fa1f572</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.Commits">
+            <summary>Commits on top of base version: 284</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.Tag">
+            <summary>Tag: </summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.BaseTag">
+            <summary>Base tag: </summary>
+        </member>
+        <member name="T:Xamarin.ThisAssembly.Git.BaseVersion">
+            <summary>Provides access to the base version information used to determine the <see cref="T:Xamarin.ThisAssembly.Git.SemVer" />.</summary>      
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.BaseVersion.Major">
+            <summary>Major: 1</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.BaseVersion.Minor">
+            <summary>Minor: 1</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.BaseVersion.Patch">
+            <summary>Patch: 6</summary>
+        </member>
+        <member name="T:Xamarin.ThisAssembly.Git.SemVer">
+            <summary>Provides access to SemVer information for the current assembly.</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.SemVer.Major">
+            <summary>Major: 1</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.SemVer.Minor">
+            <summary>Minor: 1</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.SemVer.Patch">
+            <summary>Patch: 290</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.SemVer.Label">
+            <summary>Label: </summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.SemVer.DashLabel">
+            <summary>Label with dash prefix: </summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.SemVer.Source">
+            <summary>Source: File</summary>
+        </member>
+    </members>
+</doc>

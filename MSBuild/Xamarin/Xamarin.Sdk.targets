@@ -1,0 +1,102 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<PropertyGroup>
+		<_IntermediateTelemetryReportFile>$(IntermediateOutputPath)\_TelemetryProps</_IntermediateTelemetryReportFile>
+		<_IsIncrementalBuildFile>$(IntermediateOutputPath)\_IsIncrementalBuild</_IsIncrementalBuildFile>
+		<IsIncrementalBuild>false</IsIncrementalBuild>
+		<_WriteTelemetryProperties Condition="'$(_WriteTelemetryProperties)' == '' and '$(BuildingInsideVisualStudio)' == 'true'">true</_WriteTelemetryProperties>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<CoreBuildDependsOn Condition="'$(_WriteTelemetryProperties)' == 'true' and '$(TargetFrameworkIdentifier)' == 'MonoAndroid'" >
+			_CollectAndroidTelemetryProperties;
+			_WriteTelemetryProperties;
+			$(CoreBuildDependsOn)
+		</CoreBuildDependsOn>
+		<CoreBuildDependsOn Condition="'$(_WriteTelemetryProperties)' == 'true' and '$(TargetFrameworkIdentifier)' == 'Xamarin.iOS'" >
+			_CollectIOSTelemetryProperties;
+			_WriteTelemetryProperties;
+			$(CoreBuildDependsOn)
+		</CoreBuildDependsOn>
+	</PropertyGroup>
+
+	<Target Name="_SetIsIncrementalBuild" BeforeTargets="PrepareForBuild;Build;_CollectIOSTelemetryProperties;_CollectAndroidTelemetryProperties" Condition="Exists('$(_IsIncrementalBuildFile)')">
+		<PropertyGroup>
+			<IsIncrementalBuild>true</IsIncrementalBuild>
+		</PropertyGroup>
+	</Target>
+
+	<Target Name="_CleanIsIncrementalFile" AfterTargets="Clean" Condition="Exists('$(_IsIncrementalBuildFile)')">
+		<Delete Files="$(_IsIncrementalBuildFile)" />
+	</Target>
+	
+	<Target Name="_CollectAndroidTelemetryProperties" DependsOnTargets="_SetLatestTargetFrameworkVersion">
+		<PropertyGroup>
+			<_UseFastDeployment Condition="'$(_UseFastDeployment)' == ''" >false</_UseFastDeployment>
+			<_UseFastDeployment Condition="'$(_UseFastDeployment)' == '' and '$(EmbedAssembliesIntoApk)' == 'false'">true</_UseFastDeployment>
+		</PropertyGroup>
+		<ItemGroup>
+			<_TelemetryReport Include="
+													IsIncrementalBuild=$(IsIncrementalBuild);
+													AndroidUseAapt2=$(_AndroidUseAapt2);
+													UseSharedRuntime=$(AndroidUseSharedRuntime);
+													UseFastDeployment=$(_UseFastDeployment);
+													EnableMultidex=$(AndroidEnableMultiDex);
+													EnableProGuard=$(AndroidEnableProGuard);
+													GenerateOnePackagePerABI=$(AndroidCreatePackagePerAbi);
+													BundleAssemblies=$(BundleAssemblies);
+													EnableDeveloperInstrumentation=$(DebugSymbols);
+													Debugger=$(Debugger);
+													EnableAOT=$(AotAssemblies);
+													UseConcurrentGC=$(AndroidEnableSGenConcurrent);
+													AdditionalSupportedEncodings=$(MandroidI18n.Replace(';', '|'));
+													SupportedArchitectures=$(AndroidSupportedAbis.Replace(';', '|'));
+													JavaMaxHeapSize=$(JavaMaximumHeapSize);
+													HttpClientImplementation=$(AndroidHttpClientHandlerType);
+													TLSImplementation=$(AndroidTlsProvider);
+													FastDeploymentType=$(AndroidFastDeploymentType);
+													TargetFramework=$(TargetFrameworkVersion);
+													ClassParser=$(AndroidClassParser);
+													CodegenTarget=$(AndroidCodegenTarget);
+													AndroidDexTool=$(AndroidDexTool);
+													AndroidLinkTool=$(AndroidLinkTool);
+													AndroidEnableProfiledAot=$(AndroidEnableProfiledAot);
+													AndroidInstallAfterBuild=$(AndroidInstallAfterBuild);
+													AndroidSessionId=$(AndroidSessionId);
+													" />
+		</ItemGroup>
+	</Target>
+
+	<Target Name="_CollectIOSTelemetryProperties">
+		<ItemGroup>
+			<_TelemetryReport Include="
+													IsIncrementalBuild=$(IsIncrementalBuild);
+													IsLocal=$(IsHotRestartBuild);
+													EnableLLVM=$(MtouchUseLlvm);
+													UseConcurrentGC=$(MtouchEnableSGenConc);
+													LinkerBehavior=$(MtouchLink);
+													AdditionalSupportedEncodings=$(MtouchI18n.Replace(';', '|'));
+													HttpClientImplementation=$(MtouchHttpClientHandler);
+													SupportedArchitectures=$(MtouchArch.Replace(';', '|'));
+													" />
+		</ItemGroup>
+	</Target>
+
+	<Target Name="_WriteTelemetryProperties" DependsOnTargets="PrepareForBuild">
+		<ItemGroup>
+			<_TelemetryReport Include="
+													BuildConfiguration=$(Configuration);
+													TemplateName=$(TemplateGuid);
+													" />
+		</ItemGroup>
+
+		<WriteLinesToFile Lines="@(_TelemetryReport)" File="$(_IntermediateTelemetryReportFile)" Overwrite="true" ContinueOnError="true" />
+	</Target>
+
+	<PropertyGroup>
+		<DeferredBuildSupported Condition="'$(DeferredBuildSupported)' == ''">false</DeferredBuildSupported>
+	</PropertyGroup>
+
+	<Target Name="DeferredBuild" DependsOnTargets="$(DeferredBuildDependsOn)" Condition="'$(DeferredBuild)' == 'true'" />
+	
+</Project>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+***********************************************************************************************
+Xamarin.Mac.ObjCBinding.Common.After.targets
+
+WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and have
+  created a backup copy.  Incorrect changes to this file will make it
+  impossible to load or build your projects from the command-line or the IDE.
+
+Copyright (C) 2010-2011 Novell. All rights reserved.
+Copyright (C) 2011-2013 Xamarin. All rights reserved.
+***********************************************************************************************
+-->
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<Target Name="GenerateApplicationManifest" DependsOnTargets="             _DeploymentComputeNativeManifestInfo;             _DeploymentComputeClickOnceManifestInfo;             ResolveComReferences;             ResolveNativeReferences;             _GenerateResolvedDeploymentManifestEntryPoint" Inputs="             $(MSBuildAllProjects);             @(AppConfigWithTargetPath);             $(_DeploymentBaseManifest);             @(ResolvedIsolatedComModules);             @(_DeploymentManifestDependencies);             @(_DeploymentResolvedManifestEntryPoint);             @(_DeploymentManifestFiles)" Outputs="@(ApplicationManifest)" />
+	<Target Name="ResolveNativeReferences" Condition="'@(NativeReference)'!=''" DependsOnTargets="ResolveProjectReferences" />
+	<Import Project="$(MSBuildThisFileDirectory)Xamarin.Mac.Windows.After.targets" Condition="Exists('$(MSBuildThisFileDirectory)Xamarin.Mac.Windows.After.targets')" />
+</Project>

@@ -1,0 +1,2549 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xamarin.Messaging.Ssh</name>
+    </assembly>
+    <members>
+        <member name="M:Xamarin.Messaging.Ssh.ISshCommandRunner.ExecuteSudoCommand(System.String,System.Security.SecureString)">
+            <exception cref="!:SshCommandException">SshCommandException</exception>
+            <exception cref="!:SshRootAuthenticationException">SshRootAuthenticationException</exception>
+            <exception cref="!:TimeoutException">TimeoutException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.ISshCommands.RunSudoCommandAsync(System.String,System.Security.SecureString)">
+            <exception cref="!:SshRootAuthenticationException">SshRootAuthenticationException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.ISshCommands.RunBashCommandAsync(System.String,System.Boolean)">
+            <exception cref="!:SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.ISshCommands.RunCommandAsync(System.String,System.Boolean)">
+            <exception cref="!:SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.ISshCommands.EnumerateFilesAsync(System.String,System.Boolean,System.String)">
+            <exception cref="!:SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.ISshCommands.EnumerateDirectoriesAsync(System.String,System.String)">
+            <exception cref="!:SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.ISshCommands.GetFileChecksumAsync(System.String)">
+            <exception cref="!:SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.ISshCommands.GetDirectoryChecksumAsync(System.String)">
+            <exception cref="!:SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.ISshCommands.CopyFileAsync(System.String,System.String)">
+            <exception cref="!:SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.ISshCommands.CopyDirectoryAsync(System.String,System.String)">
+            <exception cref="!:SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.ISshCommands.CreateDirectoryAsync(System.String)">
+            <exception cref="!:SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.ISshCommands.DeleteDirectoryAsync(System.String)">
+            <exception cref="!:SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.ISshCommands.DeleteFileAsync(System.String)">
+            <exception cref="!:SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.ISshCommands.GetHomeDirectoryAsync">
+            <exception cref="!:SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.ISshCommands.UnzipAsync(System.String,System.String)">
+            <exception cref="!:SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.ISshCommands.OpenAsync(System.String)">
+            <exception cref="!:SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.ISshCommands.SetEnvVarAsync(System.String,System.String)">
+            <exception cref="!:SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.ISshCommands.UnsetEnvVarAsync(System.String)">
+            <exception cref="!:SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.ISshCommands.StartProcessWithLaunchCtlAsync(System.String,System.Int32,System.Boolean,System.Int32,Xamarin.Messaging.Ssh.StartOptions)">
+            <exception cref="!:SshCommandException">SshCommandException</exception>
+            <exception cref="T:System.InvalidOperationException">InvalidOperationException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.ISshCommands.StartProcessWithMonoAsync(System.String,System.Int32,System.String)">
+            <exception cref="!:SshCommandException">SshCommandException</exception>
+            <exception cref="T:System.InvalidOperationException">InvalidOperationException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.ISshCommands.GetMonoDirectoryAsync">
+            <exception cref="!:SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.ISshCommands.GetMonoVersionAsync">
+            <exception cref="!:SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.ISshCommands.GetCachePackagePathAsync(System.String)">
+            <summary>
+            Returns the full path where the cached package should be located
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.ISshCommands.TouchAsync(System.String)">
+            <summary>
+            Touches the file
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.LaunchCtlProcessInformation.GetOutputAsync">
+            <exception cref="!:SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.AgentCommands_Check_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred while checking Agent {0} installation.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.AgentCommands_Check_Info">
+            <summary>
+              Looks up a localized string similar to Checking Agent {0} installation....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.AgentCommands_CheckRunning_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred while checking running Agent {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.AgentCommands_CheckRunning_Info">
+            <summary>
+              Looks up a localized string similar to Searching for already running Agent {0} processes....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.AgentCommands_Install_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred while installing Agent {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.AgentCommands_Install_Info">
+            <summary>
+              Looks up a localized string similar to Installing Agent {0}....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.AgentCommands_Start_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred while trying to start the Agent {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.AgentCommands_Start_Info">
+            <summary>
+              Looks up a localized string similar to Starting Agent {0} in port {1}....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.AgentCommands_Start_Succeeded">
+            <summary>
+              Looks up a localized string similar to Agent {0} started successfully.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.AgentCommands_Start_Timeout">
+            <summary>
+              Looks up a localized string similar to The {0} Agent initialization exceeded the timeout of {1} millisecs without receiving confirmation from the Agent..
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.AgentCommands_Uninstall_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred while uninstalling Agent {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.AgentCommands_Verify_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred while verifying installed Agent {0} files.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.AgentLocalCommands_StartProcess_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred while trying to start local Agent {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.AgentMonitor_AgentDisconnectionSubscribe_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred while trying to subscribe to the last will client messages to monitor disconnections, so the content sent to &apos;{0}&apos; topic will not be handled.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.ApplicationMessageBuilder_TopicRequired">
+            <summary>
+              Looks up a localized string similar to Topic field is required to build an Application Message.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.ApplicationMessageBuilder_TopicRequired1">
+            <summary>
+              Looks up a localized string similar to Topic field is required to build an Application Message.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.BrokerCommands_Check_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred while checking Broker {0} installation.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.BrokerCommands_Check_Info">
+            <summary>
+              Looks up a localized string similar to Checking Broker {0} installation....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.BrokerCommands_CheckRunning_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred while searching for an already running Broker.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.BrokerCommands_CheckRunning_Info">
+            <summary>
+              Looks up a localized string similar to Searching for already running Broker processes....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.BrokerCommands_Install_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred while installing Broker {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.BrokerCommands_Install_Info">
+            <summary>
+              Looks up a localized string similar to Installing Broker {0}....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.BrokerCommands_Start_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred while trying to start the Broker {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.BrokerCommands_Start_Info">
+            <summary>
+              Looks up a localized string similar to Starting Broker {0} in port {1}....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.BrokerCommands_Start_Succeeded">
+            <summary>
+              Looks up a localized string similar to Broker {0} started successfully.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.BrokerCommands_Start_Timeout">
+            <summary>
+              Looks up a localized string similar to The Broker initialization exceeded the timeout of {0} millisecs without receiving confirmation from the Broker process.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.BrokerCommands_Verify_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred while verifying installed Broker files.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingAuthenticationMethod_Error">
+            <summary>
+              Looks up a localized string similar to Unable to authenticate using the following authentication method: {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingClient_ClientStopped">
+            <summary>
+              Looks up a localized string similar to The client cannot be used because the connection has been disposed.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingClient_ClientStopped1">
+            <summary>
+              Looks up a localized string similar to The client cannot be used because the connection has been disposed.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingClient_PublishIncomplete">
+            <summary>
+              Looks up a localized string similar to The response of the Post to topic {0} for client {1} was null..
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingClient_PublishIncomplete1">
+            <summary>
+              Looks up a localized string similar to The response of the post to topic &apos;{0}&apos; for client &apos;{1}&apos; was null..
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingClient_SubscribeError">
+            <summary>
+              Looks up a localized string similar to There was an error while trying to subscribe to response topic {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingClient_SubscribeError1">
+            <summary>
+              Looks up a localized string similar to There was an error while trying to subscribe to response topic &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingClient_SubscribeIncomplete">
+            <summary>
+              Looks up a localized string similar to A subscription to response topic {0} couldn&apos;t be completed.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingClient_SubscribeIncomplete1">
+            <summary>
+              Looks up a localized string similar to A subscription to response topic &apos;{0}&apos; couldn&apos;t be completed.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingClient_UnderlyingClientDisconnected">
+            <summary>
+              Looks up a localized string similar to No operation can be performed because the underlying client is disconnected.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingClient_UnderlyingClientDisconnected1">
+            <summary>
+              Looks up a localized string similar to No operation can be performed because the underlying client is disconnected.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingCommands_Install_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred while trying to install {0} in {1}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingCommands_LocalChecksum_CantVerify">
+            <summary>
+              Looks up a localized string similar to Local checksum couldn&apos;t be verified because there were problems analyzing the content of: {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingCommands_LocalChecksum_Computing">
+            <summary>
+              Looks up a localized string similar to Computing local checksum of {0} in {1}. Files to compute: {2}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingCommands_ProcessInitialization_Successfully">
+            <summary>
+              Looks up a localized string similar to Process {0} initialized successfully.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingCommands_ServerChecksum_CantVerify">
+            <summary>
+              Looks up a localized string similar to Server checksum couldn&apos;t be verified because there were problems analyzing the content of: {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingCommands_ServerChecksum_ServerNotExists">
+            <summary>
+              Looks up a localized string similar to Server directory {0} doesn&apos;t exist, hence the checksum can&apos;t be verified.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingCommands_Unzip_Local_File">
+            <summary>
+              Looks up a localized string similar to Unzipping {0} file to {1} directory....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingCommands_Upload_CreatingDir">
+            <summary>
+              Looks up a localized string similar to Creating directory {0} for installation....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingCommands_Upload_Error">
+            <summary>
+              Looks up a localized string similar to File couldn&apos;t be copied to {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingCommands_Upload_Starting">
+            <summary>
+              Looks up a localized string similar to Copying file {0} to {1}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingCommands_Upload_Successfully">
+            <summary>
+              Looks up a localized string similar to File {0} copied sucessfully to {1}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingCommands_Upload_Unzipping">
+            <summary>
+              Looks up a localized string similar to Unzipping file {0} to {1}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingCommands_Verify_Checksum_Failed">
+            <summary>
+              Looks up a localized string similar to Integrity check failed between deployed content and local copy. Server path: {0}, Local path: {1}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingCommands_Verify_Checksum_Succeeded">
+            <summary>
+              Looks up a localized string similar to Integrity check succeeded for {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingCommands_Verify_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred while verifying installed {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingCommands_Verify_NotFound">
+            <summary>
+              Looks up a localized string similar to Unable to verify files because {0} was not found.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingConnection_ClientAlreadyConnected">
+            <summary>
+              Looks up a localized string similar to The connection is already started and couldn&apos;t be started again.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingConnection_ClientAlreadyConnected1">
+            <summary>
+              Looks up a localized string similar to The connection is already started and couldn&apos;t be started again.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingConnection_ConnectionIncomplete">
+            <summary>
+              Looks up a localized string similar to The connection of the client {0} couldn&apos;t be completed.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingConnection_ConnectionIncomplete1">
+            <summary>
+              Looks up a localized string similar to The connection of the client &apos;{0}&apos; couldn&apos;t be completed.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingConnection_UnderlyingClientError">
+            <summary>
+              Looks up a localized string similar to There was an error while trying to connect the client {0} to the Server.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingConnection_UnderlyingClientError1">
+            <summary>
+              Looks up a localized string similar to There was an error while trying to connect the client &apos;{0}&apos; to the Server..
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingEvents_InitializationError">
+            <summary>
+              Looks up a localized string similar to An error occurred while trying to register the follow Messaging Handlers: AgentStatus, ClientStatus, MessageStatus, Ping. Please check the logs for more details..
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingFileManager_Delete_File_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred while trying to delete a file for App {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingFileManager_Download_Files_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred downloading files for App {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingFileManager_ExistsFile_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred while verifying a file for App {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingFileManager_Progress_Uploaded">
+            <summary>
+              Looks up a localized string similar to Uploaded {0} 100%.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingFileManager_Progress_Uploading">
+            <summary>
+              Looks up a localized string similar to Uploading {0} ({1}/{2} KB) {3}%....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingFileManager_Upload_Checksum_Error">
+            <summary>
+              Looks up a localized string similar to Failed to upload &apos;{0}&apos; to the Server becasue the checksum did not match.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingFileManager_Upload_Copying">
+            <summary>
+              Looks up a localized string similar to Trying to copy to {0}....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingFileManager_Upload_Error">
+            <summary>
+              Looks up a localized string similar to Unable to copy to {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingFileManager_Upload_Files_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred while uploading files for App {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingFileManager_Upload_PreparingDirectory">
+            <summary>
+              Looks up a localized string similar to Preparing directory {0} before uploading....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingFileManager_Upload_Success">
+            <summary>
+              Looks up a localized string similar to Successfully copied {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingFileManager_Upload_Unhandled_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred while uploading files.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingFileManager_Upload_VerifyingChecksum">
+            <summary>
+              Looks up a localized string similar to Checking integrity of uploaded file {0} by comparing checksum with local file.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingReceiver_ClientStopped">
+            <summary>
+              Looks up a localized string similar to The context cannot be used because the Client has been stopped..
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingReceiver_ClientStopped1">
+            <summary>
+              Looks up a localized string similar to The context cannot be used because the Client has been stopped..
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingReceiver_SubscribeError">
+            <summary>
+              Looks up a localized string similar to There was an error while trying to subscribe to topic {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingReceiver_SubscribeError1">
+            <summary>
+              Looks up a localized string similar to There was an error while trying to subscribe to topic &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingReceiver_SubscribeIncomplete">
+            <summary>
+              Looks up a localized string similar to A subscription to topic {0} couldn&apos;t be completed.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingReceiver_SubscribeIncomplete1">
+            <summary>
+              Looks up a localized string similar to A subscription to topic &apos;{0}&apos; couldn&apos;t be completed.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingReceiver_UnderlyingClientDisconnected">
+            <summary>
+              Looks up a localized string similar to No operation can be performed because the underlying client is disconnected.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingReceiver_UnderlyingClientDisconnected1">
+            <summary>
+              Looks up a localized string similar to No operation can be performed because the underlying client is disconnected.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingScpClient_ConnectError">
+            <summary>
+              Looks up a localized string similar to An error occurred when connecting the SCP Client.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingScpClient_Downloading">
+            <summary>
+              Looks up a localized string similar to Downloading {0}....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingScpClient_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred while using SCP Client. Trying again with a new SCP connection....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingScpClient_Uploading">
+            <summary>
+              Looks up a localized string similar to Uploading to {0}....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_Agent_Installing">
+            <summary>
+              Looks up a localized string similar to Installing Agent {0}....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_Agent_Running">
+            <summary>
+              Looks up a localized string similar to Agent {0} is running.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_Agent_Starting">
+            <summary>
+              Looks up a localized string similar to Starting Agent {0}....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_Agent_Stopping">
+            <summary>
+              Looks up a localized string similar to Stopping Agent {0}....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_Agent_Unknown">
+            <summary>
+              Looks up a localized string similar to Agent {0} is not connected....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_Authentication_Error_Credentials">
+            <summary>
+              Looks up a localized string similar to Could not authenticate the user &apos;{0}&apos; with the provided credentials.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_Authentication_Error_SSH_Configuration">
+            <summary>
+              Looks up a localized string similar to Please check that the host is properly configured to authenticate with SSH keys..
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_Authentication_Error_SSH_Keys">
+            <summary>
+              Looks up a localized string similar to Could not authenticate the user &apos;{0}&apos; with SSH keys..
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_Authentication_Error_SSH_More">
+            <summary>
+              Looks up a localized string similar to More details: {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_Authentication_Error_SSH_No_Keys">
+            <summary>
+              Looks up a localized string similar to No keys has been found..
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_Authentication_Error_SSH_Permission">
+            <summary>
+              Looks up a localized string similar to Please check that both $HOME folder and ~/.ssh/authorized_keys have the appropiate permissions to use SSH..
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_ClientStatus_Changed">
+            <summary>
+              Looks up a localized string similar to Client &apos;{0}&apos; status changed to {1}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_ConfigureHost_Unhandled_Error">
+            <summary>
+              Looks up a localized string similar to An unexpected error occurred while configuring SSH for the user {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_Connect_Address_Error">
+            <summary>
+              Looks up a localized string similar to Couldn&apos;t resolve address: {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_Connected">
+            <summary>
+              Looks up a localized string similar to Connection successfully established with the Server {0}:{1}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_Connecting">
+            <summary>
+              Looks up a localized string similar to Starting connection to {0}....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_ConnectMqtt_ConnectError">
+            <summary>
+              Looks up a localized string similar to An error occurred while trying to connect to the Broker....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_ConnectMqtt_StartBrokerError">
+            <summary>
+              Looks up a localized string similar to An error occurred while trying to start the Broker....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_Disconnected_Closed">
+            <summary>
+              Looks up a localized string similar to The underlying client has been closed.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_Disconnected_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred on the underlying client while executing an operation. Details: {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_Disconnected_Remote">
+            <summary>
+              Looks up a localized string similar to The underlying client has been disconnected by the remote host.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_DownloadDirectory_DirectoryNotFound">
+            <summary>
+              Looks up a localized string similar to The directory &apos;{0}&apos; was not found on the Server.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_DownloadFile_FileNotFound">
+            <summary>
+              Looks up a localized string similar to The file &apos;{0}&apos; was not found on the Server.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_ErrorStartAgent">
+            <summary>
+              Looks up a localized string similar to An error occurred while trying to start the Agent {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_ErrorStartBroker">
+            <summary>
+              Looks up a localized string similar to An error occurred while trying to start the Broker.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_KeepAliveError">
+            <summary>
+              Looks up a localized string similar to Keep Alive mechanism failed. No ack received from the Broker. The connection will be disconnected....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_MessagingConnected">
+            <summary>
+              Looks up a localized string similar to Connection established with the Server {0}:{1}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_Reconnect_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred while trying to reconnect to the remote host.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_Reconnect_Starting">
+            <summary>
+              Looks up a localized string similar to Starting reconnection....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_Reconnect_Unable">
+            <summary>
+              Looks up a localized string similar to Unable to reconnect because the service has not been connected for the first time.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_RegisterHandler_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred while registering a handler for &apos;{0}&apos; messages, so all the content sent to the topic &apos;{1}&apos; will not be handled in this active connection.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_Restart_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred while trying to restart agent {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_StartAgentError">
+            <summary>
+              Looks up a localized string similar to Unable to the start the agent &apos;{0}&apos;: &apos;{1}&apos;.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_StartAgentWaiting">
+            <summary>
+              Looks up a localized string similar to Waiting for the agent &apos;{0}&apos; to change its status from &apos;{1}&apos; to &apos;{2}&apos;.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_StartBroker_AlreadyStarted">
+            <summary>
+              Looks up a localized string similar to An active Broker has been found at {0}:{1}, hence it will be re used.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_StartBroker_Installing">
+            <summary>
+              Looks up a localized string similar to Installing Broker {0}....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_StartBroker_Starting">
+            <summary>
+              Looks up a localized string similar to Starting Broker {0} in port {1}....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_UnableToInstallAgent">
+            <summary>
+              Looks up a localized string similar to Unable to install the Agent &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.MessagingService_UnableToInstallBroker">
+            <summary>
+              Looks up a localized string similar to Unable to install the Broker.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.PortForwarder_Start_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred when trying to start the forwarded port from &apos;{0}&apos; to &apos;{1}&apos;.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.PortForwarder_Stop_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred when trying to stop the forwarded port from &apos;{0}&apos; to &apos;{1}&apos;.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshCommandExtensions_DefaultError">
+            <summary>
+              Looks up a localized string similar to An error occurred while executing an SSH command. Error code: {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshCommandExtensions_ShellStreamError">
+            <summary>
+              Looks up a localized string similar to A timeout occurred while waiting a result from the SSH shell. Expected result expression: {0}..
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshCommandExtensions_UserNotLoggedInError">
+            <summary>
+              Looks up a localized string similar to There was a problem trying to complete the pairing process. Please ensure the user has an open desktop session on the Mac and try again..
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshCommandRunner_Connect_Error">
+            <summary>
+              Looks up a localized string similar to Unable to connect to the Server in order to execute the SSH command.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshCommandRunner_Executing_Error">
+            <summary>
+              Looks up a localized string similar to Exception executing &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshCommandRunner_Executing_Message">
+            <summary>
+              Looks up a localized string similar to Executing SSH command &apos;{0}&apos;....
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshCommandRunner_Failed">
+            <summary>
+              Looks up a localized string similar to Failed to execute &apos;{0}&apos;: ExitStatus = {1}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshCommandRunner_SudoHandshake_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred while performing the custom xma handshake for sudo commands.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshCommands_ConfigurablePList">
+             <summary>
+               Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+            &lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
+            &lt;plist version=&quot;1.0&quot;&gt;
+            &lt;dict&gt;
+            	&lt;key&gt;Label&lt;/key&gt;
+            	&lt;string&gt;com.xamarin.{1}&lt;/string&gt;
+            	&lt;key&gt;RunAtLoad&lt;/key&gt;
+            	&lt;true/&gt;
+            	&lt;key&gt;LaunchOnlyOnce&lt;/key&gt;
+            	&lt;true/&gt;
+            	&lt;key&gt;LimitLoadToSessionType&lt;/key&gt;
+            	&lt;string&gt;Aqua&lt;/string&gt;
+            	&lt;key&gt;StandardOutPath&lt;/key&gt;
+            	&lt;string&gt;{2}&lt;/string&gt;
+            	&lt;key&gt;StandardErrorPath&lt;/key&gt;
+            	&lt;string&gt;{3}&lt;/string&gt;
+            	&lt;key&gt;ProgramArguments&lt;/key&gt;
+            	&lt;array&gt;
+            		&lt;str [rest of string was truncated]&quot;;.
+             </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshCommands_CouldNotStartProcessBecauseUserIsNotLoggedIn">
+            <summary>
+              Looks up a localized string similar to The user &apos;{0}&apos; must be logged in on the Server in order to start the process. Please make sure the user &apos;{0}&apos; is logged in and try to connect again..
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshCommands_Md5NotFound">
+            <summary>
+              Looks up a localized string similar to Could not find an md5 tool on the connected Server. Searched tools: {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshCommands_MonoFound">
+            <summary>
+              Looks up a localized string similar to A valid Mono installation has been found at &apos;{0}&apos;.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshCommands_MonoNotFound">
+            <summary>
+              Looks up a localized string similar to Could not find a Mono installation on the Server.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshCommands_MonoNotFoundDiagnostics">
+            <summary>
+              Looks up a localized string similar to Probed locations for Mono on the Server: {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshCommands_ShellNotSupported_Error">
+            <summary>
+              Looks up a localized string similar to The shell &apos;{0}&apos; is currently not supported. Please change it to one of the supported shells in order to continue. Supported shells: {1}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshCommands_ShellStream_Unresponsive">
+            <summary>
+              Looks up a localized string similar to The Shell Stream didn&apos;t respond in {0} seconds. The command execution will be aborted..
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshCommands_SshFolderCreationFailed">
+            <summary>
+              Looks up a localized string similar to An error occurred while trying to create SSH folder..
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshCommands_SshKeysGenerationFailed">
+            <summary>
+              Looks up a localized string similar to An error occurred while generating the SSH keys. Please check that the environment is properly configured..
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshCommands_SshKeysGenerationFailedDetailed">
+            <summary>
+              Looks up a localized string similar to An error occurred while generating the SSH keys. Please check that the environment is properly configured. Details: {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshCommands_SshKeysRemovalFailed">
+            <summary>
+              Looks up a localized string similar to An error occurred while removing SSH keys. Please check that the environment is properly configured..
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshCommands_SshKeysRemovalFailedDetailed">
+            <summary>
+              Looks up a localized string similar to An error occurred while removing SSH keys. Please check that the environment is properly configured. Details: {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshFingerprintRetriever_Failed">
+            <summary>
+              Looks up a localized string similar to Could not retrieve fingerprint..
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshMessagingConnection_ConnectSsh_Authentication_Error">
+            <summary>
+              Looks up a localized string similar to An authentication error occurred while trying to connect to SSH.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshMessagingConnection_Disconnected">
+            <summary>
+              Looks up a localized string similar to The Messaging connection has been disconnected unexpectedely. Reason: {0}, Message: {1}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshMessagingConnection_DisconnectError">
+            <summary>
+              Looks up a localized string similar to An error ocurred while trying to disconnect the Messaging Client.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshMessagingConnection_DisconnectScp_Error">
+            <summary>
+              Looks up a localized string similar to An unexpected error occurred while disconnecting the SCP client.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshMessagingConnection_DisconnectSsh_Error">
+            <summary>
+              Looks up a localized string similar to An unexpected error occurred while disconnecting the SSH client.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshMessagingConnection_Dispose_Error">
+            <summary>
+              Looks up a localized string similar to An unexpected error occurred while disposing the SSH Messaging connection..
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshMessagingConnection_ReconnectError">
+            <summary>
+              Looks up a localized string similar to An error occurred when trying to reconnect the SSH Session. The Messaging Client will be disconnected.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshMessagingConnection_SessionDisconnected">
+            <summary>
+              Looks up a localized string similar to The SSH Session has been disconnected unexpectedely.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshMessagingConnection_StopForwardedPort_Error">
+            <summary>
+              Looks up a localized string similar to An unexpected error occurred while disposing forwarded ports.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshMessagingConnection_UnexpectedError">
+            <summary>
+              Looks up a localized string similar to An unexpected error occurred with the current SSH Session.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshService_DeleteDirectory_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred deleting directory for App {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshService_DeleteFile_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred deleting App {0} files.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshService_DirectoryChecksum_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred getting directory checksum for App {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Resources.SshService_FileChecksum_Error">
+            <summary>
+              Looks up a localized string similar to An error occurred getting file checksum for App {0}.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.ApplicationMessageBuilder">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.ApplicationMessageBuilder.TopicRequired">
+            <summary>
+            Looks up a localized string similar to: 
+            Topic field is required to build an Application Message
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.ApplicationMessageBuilder.TopicRequired1">
+            <summary>
+            Looks up a localized string similar to: 
+            Topic field is required to build an Application Message
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingClient">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingClient.ClientStopped">
+            <summary>
+            Looks up a localized string similar to: 
+            The client cannot be used because the connection has been disposed
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingClient.ClientStopped1">
+            <summary>
+            Looks up a localized string similar to: 
+            The client cannot be used because the connection has been disposed
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingClient.PublishIncomplete(System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            The response of the Post to topic {0} for client {1} was null.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingClient.PublishIncomplete1(System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            The response of the post to topic '{0}' for client '{1}' was null.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingClient.SubscribeError(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            There was an error while trying to subscribe to response topic {0}
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingClient.SubscribeError1(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            There was an error while trying to subscribe to response topic '{0}'
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingClient.SubscribeIncomplete(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            A subscription to response topic {0} couldn't be completed
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingClient.SubscribeIncomplete1(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            A subscription to response topic '{0}' couldn't be completed
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingClient.UnderlyingClientDisconnected">
+            <summary>
+            Looks up a localized string similar to: 
+            No operation can be performed because the underlying client is disconnected
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingClient.UnderlyingClientDisconnected1">
+            <summary>
+            Looks up a localized string similar to: 
+            No operation can be performed because the underlying client is disconnected
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingConnection">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingConnection.ClientAlreadyConnected">
+            <summary>
+            Looks up a localized string similar to: 
+            The connection is already started and couldn't be started again
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingConnection.ClientAlreadyConnected1">
+            <summary>
+            Looks up a localized string similar to: 
+            The connection is already started and couldn't be started again
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingConnection.ConnectionIncomplete(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            The connection of the client {0} couldn't be completed
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingConnection.ConnectionIncomplete1(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            The connection of the client '{0}' couldn't be completed
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingConnection.UnderlyingClientError(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            There was an error while trying to connect the client {0} to the Server
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingConnection.UnderlyingClientError1(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            There was an error while trying to connect the client '{0}' to the Server.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingReceiver">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingReceiver.ClientStopped">
+            <summary>
+            Looks up a localized string similar to: 
+            The context cannot be used because the Client has been stopped.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingReceiver.ClientStopped1">
+            <summary>
+            Looks up a localized string similar to: 
+            The context cannot be used because the Client has been stopped.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingReceiver.SubscribeError(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            There was an error while trying to subscribe to topic {0}
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingReceiver.SubscribeError1(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            There was an error while trying to subscribe to topic '{0}'
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingReceiver.SubscribeIncomplete(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            A subscription to topic {0} couldn't be completed
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingReceiver.SubscribeIncomplete1(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            A subscription to topic '{0}' couldn't be completed
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingReceiver.UnderlyingClientDisconnected">
+            <summary>
+            Looks up a localized string similar to: 
+            No operation can be performed because the underlying client is disconnected
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingReceiver.UnderlyingClientDisconnected1">
+            <summary>
+            Looks up a localized string similar to: 
+            No operation can be performed because the underlying client is disconnected
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.SshCommands">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Xamarin.Messaging.Ssh.Properties.Strings.SshCommands.ConfigurablePList(System.Object,System.Object,System.Object,System.Object,System.Object)" -->
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.SshCommands.CouldNotStartProcessBecauseUserIsNotLoggedIn(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            The user '{0}' must be logged in on the Server in order to start the process. Please make sure the user '{0}' is logged in and try to connect again.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.SshCommands.Md5NotFound(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Could not find an md5 tool on the connected Server. Searched tools: {0}
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.SshCommands.MonoFound(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            A valid Mono installation has been found at '{0}'
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.SshCommands.MonoNotFound">
+            <summary>
+            Looks up a localized string similar to: 
+            Could not find a Mono installation on the Server
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.SshCommands.MonoNotFoundDiagnostics(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Probed locations for Mono on the Server: {0}
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.SshCommands.SshFolderCreationFailed">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while trying to create SSH folder.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.SshCommands.SshKeysGenerationFailed">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while generating the SSH keys. Please check that the environment is properly configured.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.SshCommands.SshKeysGenerationFailedDetailed(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while generating the SSH keys. Please check that the environment is properly configured. Details: {0}
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.SshCommands.SshKeysRemovalFailed">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while removing SSH keys. Please check that the environment is properly configured.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.SshCommands.SshKeysRemovalFailedDetailed(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while removing SSH keys. Please check that the environment is properly configured. Details: {0}
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.SshCommands.ShellStream">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.SshCommands.ShellStream.Unresponsive(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            The Shell Stream didn't respond in {0} seconds. The command execution will be aborted.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.SshCommands.ShellNotSupported">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.SshCommands.ShellNotSupported.Error(System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            The shell '{0}' is currently not supported. Please change it to one of the supported shells in order to continue. Supported shells: {1}
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.SshMessagingConnection">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.SshMessagingConnection.Disconnected(System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            The Messaging connection has been disconnected unexpectedely. Reason: {0}, Message: {1}
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.SshMessagingConnection.DisconnectError">
+            <summary>
+            Looks up a localized string similar to: 
+            An error ocurred while trying to disconnect the Messaging Client
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.SshMessagingConnection.ReconnectError">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred when trying to reconnect the SSH Session. The Messaging Client will be disconnected
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.SshMessagingConnection.SessionDisconnected">
+            <summary>
+            Looks up a localized string similar to: 
+            The SSH Session has been disconnected unexpectedely
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.SshMessagingConnection.UnexpectedError">
+            <summary>
+            Looks up a localized string similar to: 
+            An unexpected error occurred with the current SSH Session
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.SshMessagingConnection.Dispose">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.SshMessagingConnection.Dispose.Error">
+            <summary>
+            Looks up a localized string similar to: 
+            An unexpected error occurred while disposing the SSH Messaging connection.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.SshMessagingConnection.DisconnectSsh">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.SshMessagingConnection.DisconnectSsh.Error">
+            <summary>
+            Looks up a localized string similar to: 
+            An unexpected error occurred while disconnecting the SSH client
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.SshMessagingConnection.ConnectSsh">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.SshMessagingConnection.ConnectSsh.Authentication">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.SshMessagingConnection.ConnectSsh.Authentication.Error">
+            <summary>
+            Looks up a localized string similar to: 
+            An authentication error occurred while trying to connect to SSH
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.SshMessagingConnection.DisconnectScp">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.SshMessagingConnection.DisconnectScp.Error">
+            <summary>
+            Looks up a localized string similar to: 
+            An unexpected error occurred while disconnecting the SCP client
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.SshMessagingConnection.StopForwardedPort">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.SshMessagingConnection.StopForwardedPort.Error">
+            <summary>
+            Looks up a localized string similar to: 
+            An unexpected error occurred while disposing forwarded ports
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.SshCommandExtensions">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.SshCommandExtensions.DefaultError(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while executing an SSH command. Error code: {0}
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.SshCommandExtensions.ShellStreamError(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            A timeout occurred while waiting a result from the SSH shell. Expected result expression: {0}.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.SshCommandExtensions.UserNotLoggedInError">
+            <summary>
+            Looks up a localized string similar to: 
+            There was a problem trying to complete the pairing process. Please ensure the user has an open desktop session on the Mac and try again.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.SshFingerprintRetriever">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.SshFingerprintRetriever.Failed">
+            <summary>
+            Looks up a localized string similar to: 
+            Could not retrieve fingerprint.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.AgentCommands">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.AgentCommands.Check">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.AgentCommands.Check.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while checking Agent {0} installation
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.AgentCommands.Check.Info(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Checking Agent {0} installation...
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.AgentCommands.CheckRunning">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.AgentCommands.CheckRunning.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while checking running Agent {0}
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.AgentCommands.CheckRunning.Info(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Searching for already running Agent {0} processes...
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.AgentCommands.Install">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.AgentCommands.Install.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while installing Agent {0}
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.AgentCommands.Install.Info(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Installing Agent {0}...
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.AgentCommands.Uninstall">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.AgentCommands.Uninstall.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while uninstalling Agent {0}
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.AgentCommands.Verify">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.AgentCommands.Verify.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while verifying installed Agent {0} files
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.AgentCommands.Start">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.AgentCommands.Start.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while trying to start the Agent {0}
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.AgentCommands.Start.Info(System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Starting Agent {0} in port {1}...
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.AgentCommands.Start.Succeeded(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Agent {0} started successfully
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.AgentCommands.Start.Timeout(System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            The {0} Agent initialization exceeded the timeout of {1} millisecs without receiving confirmation from the Agent.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.BrokerCommands">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.BrokerCommands.Check">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.BrokerCommands.Check.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while checking Broker {0} installation
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.BrokerCommands.Check.Info(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Checking Broker {0} installation...
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.BrokerCommands.CheckRunning">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.BrokerCommands.CheckRunning.Error">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while searching for an already running Broker
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.BrokerCommands.CheckRunning.Info">
+            <summary>
+            Looks up a localized string similar to: 
+            Searching for already running Broker processes...
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.BrokerCommands.Install">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.BrokerCommands.Install.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while installing Broker {0}
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.BrokerCommands.Install.Info(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Installing Broker {0}...
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.BrokerCommands.Verify">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.BrokerCommands.Verify.Error">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while verifying installed Broker files
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.BrokerCommands.Start">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.BrokerCommands.Start.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while trying to start the Broker {0}
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.BrokerCommands.Start.Info(System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Starting Broker {0} in port {1}...
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.BrokerCommands.Start.Succeeded(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Broker {0} started successfully
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.BrokerCommands.Start.Timeout(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            The Broker initialization exceeded the timeout of {0} millisecs without receiving confirmation from the Broker process
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingAuthenticationMethod">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingAuthenticationMethod.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Unable to authenticate using the following authentication method: {0}
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.SshCommandRunner">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.SshCommandRunner.Failed(System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Failed to execute '{0}': ExitStatus = {1}
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.SshCommandRunner.Connect">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.SshCommandRunner.Connect.Error">
+            <summary>
+            Looks up a localized string similar to: 
+            Unable to connect to the Server in order to execute the SSH command
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.SshCommandRunner.Executing">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.SshCommandRunner.Executing.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Exception executing '{0}'
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.SshCommandRunner.Executing.Message(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Executing SSH command '{0}'...
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.SshCommandRunner.SudoHandshake">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.SshCommandRunner.SudoHandshake.Error">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while performing the custom xma handshake for sudo commands
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.Install">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.Install.Error(System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while trying to install {0} in {1}
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.Verify">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.Verify.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while verifying installed {0}
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.Verify.NotFound(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Unable to verify files because {0} was not found
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.Verify.Checksum">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.Verify.Checksum.Failed(System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Integrity check failed between deployed content and local copy. Server path: {0}, Local path: {1}
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.Verify.Checksum.Succeeded(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Integrity check succeeded for {0}
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.ProcessInitialization">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.ProcessInitialization.Successfully(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Process {0} initialized successfully
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.Upload">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.Upload.CreatingDir(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Creating directory {0} for installation...
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.Upload.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            File couldn't be copied to {0}
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.Upload.Starting(System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Copying file {0} to {1}
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.Upload.Successfully(System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            File {0} copied sucessfully to {1}
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.Upload.Unzipping(System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Unzipping file {0} to {1}
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.LocalChecksum">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.LocalChecksum.CantVerify(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Local checksum couldn't be verified because there were problems analyzing the content of: {0}
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.LocalChecksum.Computing(System.Object,System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Computing local checksum of {0} in {1}. Files to compute: {2}
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.ServerChecksum">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.ServerChecksum.CantVerify(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Server checksum couldn't be verified because there were problems analyzing the content of: {0}
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.ServerChecksum.ServerNotExists(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Server directory {0} doesn't exist, hence the checksum can't be verified
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.Unzip">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.Unzip.Local">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingCommands.Unzip.Local.File(System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Unzipping {0} file to {1} directory...
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingScpClient">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingScpClient.ConnectError">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred when connecting the SCP Client
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingScpClient.Downloading(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Downloading {0}...
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingScpClient.Error">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while using SCP Client. Trying again with a new SCP connection...
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingScpClient.Uploading(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Uploading to {0}...
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingEvents">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingEvents.InitializationError">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while trying to register the follow Messaging Handlers: AgentStatus, ClientStatus, MessageStatus, Ping. Please check the logs for more details.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingFileManager">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingFileManager.Download">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingFileManager.Download.Files">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingFileManager.Download.Files.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred downloading files for App {0}
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingFileManager.Progress">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingFileManager.Progress.Uploaded(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Uploaded {0} 100%
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingFileManager.Progress.Uploading(System.Object,System.Object,System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Uploading {0} ({1}/{2} KB) {3}%...
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingFileManager.Upload">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingFileManager.Upload.Copying(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Trying to copy to {0}...
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingFileManager.Upload.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Unable to copy to {0}
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingFileManager.Upload.PreparingDirectory(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Preparing directory {0} before uploading...
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingFileManager.Upload.Success(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Successfully copied {0}
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingFileManager.Upload.VerifyingChecksum(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Checking integrity of uploaded file {0} by comparing checksum with local file
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingFileManager.Upload.Checksum">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingFileManager.Upload.Checksum.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Failed to upload '{0}' to the Server becasue the checksum did not match
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingFileManager.Upload.Files">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingFileManager.Upload.Files.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while uploading files for App {0}
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingFileManager.Upload.Unhandled">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingFileManager.Upload.Unhandled.Error">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while uploading files
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingFileManager.Delete">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingFileManager.Delete.File">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingFileManager.Delete.File.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while trying to delete a file for App {0}
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingFileManager.ExistsFile">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingFileManager.ExistsFile.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while verifying a file for App {0}
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Connected(System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Connection successfully established with the Server {0}:{1}
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Connecting(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Starting connection to {0}...
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.ErrorStartAgent(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while trying to start the Agent {0}
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.ErrorStartBroker">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while trying to start the Broker
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.KeepAliveError">
+            <summary>
+            Looks up a localized string similar to: 
+            Keep Alive mechanism failed. No ack received from the Broker. The connection will be disconnected...
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.MessagingConnected(System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Connection established with the Server {0}:{1}
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.StartAgentError(System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Unable to the start the agent '{0}': '{1}'
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.StartAgentWaiting(System.Object,System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Waiting for the agent '{0}' to change its status from '{1}' to '{2}'
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.UnableToInstallAgent(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Unable to install the Agent '{0}'
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.UnableToInstallBroker">
+            <summary>
+            Looks up a localized string similar to: 
+            Unable to install the Broker
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Agent">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Agent.Installing(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Installing Agent {0}...
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Agent.Running(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Agent {0} is running
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Agent.Starting(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Starting Agent {0}...
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Agent.Stopping(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Stopping Agent {0}...
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Agent.Unknown(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Agent {0} is not connected...
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Authentication">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Authentication.Error">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Authentication.Error.Credentials(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Could not authenticate the user '{0}' with the provided credentials
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Authentication.Error.SSH">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Authentication.Error.SSH.Configuration">
+            <summary>
+            Looks up a localized string similar to: 
+            Please check that the host is properly configured to authenticate with SSH keys.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Authentication.Error.SSH.Keys(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Could not authenticate the user '{0}' with SSH keys.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Authentication.Error.SSH.More(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            More details: {0}
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Authentication.Error.SSH.Permission">
+            <summary>
+            Looks up a localized string similar to: 
+            Please check that both $HOME folder and ~/.ssh/authorized_keys have the appropiate permissions to use SSH.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Authentication.Error.SSH.No">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Authentication.Error.SSH.No.Keys">
+            <summary>
+            Looks up a localized string similar to: 
+            No keys has been found.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.ClientStatus">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.ClientStatus.Changed(System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Client '{0}' status changed to {1}
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.ConfigureHost">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.ConfigureHost.Unhandled">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.ConfigureHost.Unhandled.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An unexpected error occurred while configuring SSH for the user {0}
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Connect">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Connect.Address">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Connect.Address.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Couldn't resolve address: {0}
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Disconnected">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Disconnected.Closed">
+            <summary>
+            Looks up a localized string similar to: 
+            The underlying client has been closed
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Disconnected.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred on the underlying client while executing an operation. Details: {0}
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Disconnected.Remote">
+            <summary>
+            Looks up a localized string similar to: 
+            The underlying client has been disconnected by the remote host
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.DownloadFile">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.DownloadFile.FileNotFound(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            The file '{0}' was not found on the Server
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Reconnect">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Reconnect.Error">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while trying to reconnect to the remote host
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Reconnect.Starting">
+            <summary>
+            Looks up a localized string similar to: 
+            Starting reconnection...
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Reconnect.Unable">
+            <summary>
+            Looks up a localized string similar to: 
+            Unable to reconnect because the service has not been connected for the first time
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Restart">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.Restart.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while trying to restart agent {0}
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.StartBroker">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.StartBroker.AlreadyStarted(System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An active Broker has been found at {0}:{1}, hence it will be re used
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.StartBroker.Installing(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Installing Broker {0}...
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.StartBroker.Starting(System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            Starting Broker {0} in port {1}...
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.RegisterHandler">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.RegisterHandler.Error(System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while registering a handler for '{0}' messages, so all the content sent to the topic '{1}' will not be handled in this active connection
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.ConnectMqtt">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.ConnectMqtt.ConnectError">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while trying to connect to the Broker...
+            </summary>
+        </member>
+        <member name="P:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.ConnectMqtt.StartBrokerError">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while trying to start the Broker...
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.DownloadDirectory">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.MessagingService.DownloadDirectory.DirectoryNotFound(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            The directory '{0}' was not found on the Server
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.SshService">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.SshService.DeleteDirectory">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.SshService.DeleteDirectory.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred deleting directory for App {0}
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.SshService.DeleteFile">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.SshService.DeleteFile.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred deleting App {0} files
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.SshService.DirectoryChecksum">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.SshService.DirectoryChecksum.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred getting directory checksum for App {0}
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.SshService.FileChecksum">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.SshService.FileChecksum.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred getting file checksum for App {0}
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.AgentMonitor">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.AgentMonitor.AgentDisconnectionSubscribe">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.AgentMonitor.AgentDisconnectionSubscribe.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while trying to subscribe to the last will client messages to monitor disconnections, so the content sent to '{0}' topic will not be handled
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.PortForwarder">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.PortForwarder.Stop">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.PortForwarder.Stop.Error(System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred when trying to stop the forwarded port from '{0}' to '{1}'
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.PortForwarder.Start">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.PortForwarder.Start.Error(System.Object,System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred when trying to start the forwarded port from '{0}' to '{1}'
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.AgentLocalCommands">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.Properties.Strings.AgentLocalCommands.StartProcess">
+            <summary>
+            Provides access to string resources.
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.Properties.Strings.AgentLocalCommands.StartProcess.Error(System.Object)">
+            <summary>
+            Looks up a localized string similar to: 
+            An error occurred while trying to start local Agent {0}
+            </summary>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.SshCommands.EnumerateFilesAsync(System.String,System.Boolean,System.String)">
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.SshCommands.EnumerateDirectoriesAsync(System.String,System.String)">
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.SshCommands.GetFileChecksumAsync(System.String)">
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.SshCommands.GetDirectoryChecksumAsync(System.String)">
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.SshCommands.CopyFileAsync(System.String,System.String)">
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.SshCommands.CopyDirectoryAsync(System.String,System.String)">
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.SshCommands.CreateDirectoryAsync(System.String)">
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.SshCommands.DeleteDirectoryAsync(System.String)">
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.SshCommands.DeleteFileAsync(System.String)">
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.SshCommands.GetHomeDirectoryAsync">
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.SshCommands.UnzipAsync(System.String,System.String)">
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.SshCommands.OpenAsync(System.String)">
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.SshCommands.SetEnvVarAsync(System.String,System.String)">
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.SshCommands.UnsetEnvVarAsync(System.String)">
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.SshCommands.StartProcessWithLaunchCtlAsync(System.String,System.Int32,System.Boolean,System.Int32,Xamarin.Messaging.Ssh.StartOptions)">
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshCommandException">SshCommandException</exception>
+            <exception cref="T:System.InvalidOperationException">InvalidOperationException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.SshCommands.StartProcessWithMonoAsync(System.String,System.Int32,System.String)">
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshCommandException">SshCommandException</exception>
+            <exception cref="T:System.InvalidOperationException">InvalidOperationException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.SshCommands.GenerateSshKeysAsync(Xamarin.Messaging.Ssh.IMessagingScpClient,System.String,System.String,System.Security.SecureString)">
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshKeysGenerationException">SshKeysGenerationException</exception>
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.SshCommands.HasAuthorizedKeyAsync(System.String)">
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshKeysGenerationException">SshKeysGenerationException</exception>
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.SshCommands.AddAuthorizedKeyAsync(System.String,Xamarin.Messaging.Ssh.IMessagingScpClient)">
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshKeysGenerationException">SshKeysGenerationException</exception>
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.SshCommands.RemoveAuthorizedKeyAsync(System.String,Xamarin.Messaging.Ssh.IMessagingScpClient)">
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshKeysGenerationException">SshKeysGenerationException</exception>
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.SshKeysGenerator.CheckSshKeysAsync">
+            <exception cref="!:SshKeysGenerationException">SshKeysGenerationException</exception>
+        </member>
+        <member name="M:Xamarin.Messaging.Ssh.SshMessagingConnection.ConnectSsh(System.Boolean)">
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.MessagingAuthenticationException">MessagingAuthenticationException</exception>
+        </member>
+        <member name="T:Xamarin.Messaging.Ssh.MessagingCommands`1">
+            <summary>
+            Base class for Broker/Agent commands (Install, Checksum, etc)
+            </summary>
+        </member>
+        <member name="T:Xamarin.ThisAssembly">
+            <summary>Provides access to the current assembly information.</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.SimpleVersion">
+            <summary>
+            Simple release-like version number, like 4.0.1 for a cycle 5, SR1 build.
+            </summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Version">
+            <summary>
+            Full version, including commits since base version file, like 4.0.1.598
+            </summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.InformationalVersion">
+            <summary>
+            Full version, plus branch and commit short sha.
+            </summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Project.RootNamespace">
+            <summary>RootNamespace: Xamarin.Messaging.Ssh</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Project.AssemblyName">
+            <summary>AssemblyName: Xamarin.Messaging.Ssh</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Project.ProjectGuid">
+            <summary>ProjectGuid: {FB7F9C2B-934A-4E2E-95DE-CCA705073B94}</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Project.RootSuffix">
+            <summary>RootSuffix: </summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Project.TargetFrameworkVersion">
+            <summary>TargetFrameworkVersion: v4.7.2</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Project.TargetFrameworkIdentifier">
+            <summary>TargetFrameworkIdentifier: .NETFramework</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Project.TargetFrameworkMoniker">
+            <summary>TargetFrameworkMoniker: .NETFramework,Version=v4.7.2</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Project.TargetPlatformVersion">
+            <summary>TargetPlatformVersion: 7.0</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Project.TargetPlatformIdentifier">
+            <summary>TargetPlatformIdentifier: Windows</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Project.TargetPlatformMoniker">
+            <summary>TargetPlatformMoniker: Windows,Version=7.0</summary>
+        </member>
+        <member name="T:Xamarin.ThisAssembly.Git">
+            <summary>Provides access to the git information for the current assembly.</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.IsDirty">
+            <summary>IsDirty: true</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.Branch">
+            <summary>Branch: d16-6</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.Commit">
+            <summary>Commit: 41e1f0e</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.Sha">
+            <summary>Sha: 41e1f0ea445d9e1e8ee4edca529775d90fa1f572</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.Commits">
+            <summary>Commits on top of base version: 284</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.Tag">
+            <summary>Tag: </summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.BaseTag">
+            <summary>Base tag: </summary>
+        </member>
+        <member name="T:Xamarin.ThisAssembly.Git.BaseVersion">
+            <summary>Provides access to the base version information used to determine the <see cref="T:Xamarin.ThisAssembly.Git.SemVer" />.</summary>      
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.BaseVersion.Major">
+            <summary>Major: 1</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.BaseVersion.Minor">
+            <summary>Minor: 1</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.BaseVersion.Patch">
+            <summary>Patch: 6</summary>
+        </member>
+        <member name="T:Xamarin.ThisAssembly.Git.SemVer">
+            <summary>Provides access to SemVer information for the current assembly.</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.SemVer.Major">
+            <summary>Major: 1</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.SemVer.Minor">
+            <summary>Minor: 1</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.SemVer.Patch">
+            <summary>Patch: 290</summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.SemVer.Label">
+            <summary>Label: </summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.SemVer.DashLabel">
+            <summary>Label with dash prefix: </summary>
+        </member>
+        <member name="F:Xamarin.ThisAssembly.Git.SemVer.Source">
+            <summary>Source: File</summary>
+        </member>
+        <member name="M:Renci.SshNet.SshCommandExtensions.ThrowIfError(Renci.SshNet.SshCommand)">
+            <exception cref="T:Xamarin.Messaging.Ssh.Exceptions.SshCommandException">SshCommandException</exception>
+        </member>
+        <member name="M:Renci.SshNet.SshCommandExtensions.ExpectOrFail(Renci.SshNet.ShellStream,System.Text.RegularExpressions.Regex)">
+            <exception cref="T:System.TimeoutException">TimeoutException</exception>
+        </member>
+        <member name="M:Renci.SshNet.SshCommandExtensions.ExpectOrFail(Renci.SshNet.ShellStream,System.Text.RegularExpressions.Regex,System.TimeSpan)">
+            <exception cref="T:System.TimeoutException">TimeoutException</exception>
+        </member>
+    </members>
+</doc>

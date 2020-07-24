@@ -1,0 +1,33 @@
+<!--
+***********************************************************************************************
+Xamarin.Apple.Sdk.props
+
+WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and have
+  created a backup copy.  Incorrect changes to this file will make it
+  impossible to load or build your projects from the command-line or the IDE.
+
+Copyright (C) 2011-2016 Xamarin. All rights reserved.
+***********************************************************************************************
+-->
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<PropertyGroup>
+		<!-- Until VS2017+ includes its own ReferenceAssemblies outside of C:\Program Files (x86)\Reference Assemblies and into 
+				the VsInstallRoot, we must override this ourselves for our SDKs -->
+		<TargetFrameworkRootPath Condition="'$(VsInstallRoot)' != '' And '$(TargetFrameworkRootPath)' == ''">$(VsInstallRoot)\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\</TargetFrameworkRootPath>
+		<TargetFrameworkRootPath Condition="'$(VsInstallRoot)' == '' And '$(TargetFrameworkRootPath)' == ''">$(ProgramFiles)\Reference Assemblies\Microsoft\Framework\</TargetFrameworkRootPath>
+
+		<!-- We should always override the framework path so that XI resolves to its own mscorlib.dll -->
+		<FrameworkPathOverride Condition="'$(FrameworkPathOverride)' == ''">$(TargetFrameworkRootPath)$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)</FrameworkPathOverride>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<XamarinAppleSdkPropsImported>true</XamarinAppleSdkPropsImported>
+
+		<!-- Workaround if $(ProduceReferenceAssembly) is set for any @(ProjectReference) -->
+		<CompileUsingReferenceAssemblies Condition="'$(CompileUsingReferenceAssemblies)' == ''">false</CompileUsingReferenceAssemblies>
+	</PropertyGroup>
+
+	<!-- Allows providing Xamarin SDK-specific property overrides -->
+	<Import Project="Xamarin.Sdk.props" Condition="'$(XamarinSdkPropsImported)' != 'true' And Exists('Xamarin.Sdk.props')"/>
+</Project>

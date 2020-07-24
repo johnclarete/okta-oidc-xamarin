@@ -1,0 +1,218 @@
+<!--
+***********************************************************************************************
+Xamarin.Apple.Sdk.props
+
+WARNING:  DO NOT MODIFY this file unless you are knowledgeable about MSBuild and have
+  created a backup copy.  Incorrect changes to this file will make it
+  impossible to load or build your projects from the command-line or the IDE.
+
+Copyright (C) 2011-2016 Xamarin. All rights reserved.
+***********************************************************************************************
+-->
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<UsingTask TaskName="Xamarin.iOS.Tasks.CollectPdbFiles" AssemblyFile="iOS\Xamarin.iOS.Tasks.dll" />
+	<UsingTask TaskName="Xamarin.iOS.Tasks.ConvertDebuggingFiles" AssemblyFile="iOS\Xamarin.iOS.Tasks.dll" />
+
+	<!--This target copies the *.mdb files from referenced project assemblies to the project output dir (Windows only)-->
+	<Target Name="CopyMdbsToOutputDirectory"
+				DependsOnTargets="_ProcessSymbols;"
+				AfterTargets="CopyFilesToOutputDirectory"
+				Inputs="@(_ResolvedProjectReferencePaths -> '%(FullPath).mdb')"
+				Outputs="@(_ResolvedProjectReferencePaths -> '$(OutDir)\%(FileName)%(Extension).mdb')">
+
+		<Copy SourceFiles="@(_ResolvedProjectReferencePaths -> '%(FullPath).mdb')"
+        DestinationFiles="@(_ResolvedProjectReferencePaths -> '$(OutDir)\%(FileName)%(Extension).mdb')"
+				Condition="Exists('%(FullPath).mdb')"
+        SkipUnchangedFiles="true">
+
+			<Output TaskParameter="DestinationFiles" ItemName="FileWrites"/>
+		</Copy>
+	</Target>
+
+	<PropertyGroup>
+		<CopyFilesToMacOutputDirectoryDependsOn>
+			_ProcessSymbols;
+			BeforeCopyFilesToMacOutputDirectory;
+			CopyReferenceCopyLocalPathsToMac;
+			CopyDebugSymbolsToMac;
+			CopyItemsWithCopyToOutputDirectoryToMac;
+			CopyItemsWithCopyToOutputDirectoryAlwaysToMac;
+			CopyEmbeddedResourcesWithCultureToMac;
+			CopyNoneToMac;
+		</CopyFilesToMacOutputDirectoryDependsOn>
+	</PropertyGroup>
+
+	<Target Name="CopyFilesToMacOutputDirectory" DependsOnTargets="$(CopyFilesToMacOutputDirectoryDependsOn)" AfterTargets="CopyFilesToOutputDirectory" Condition="'$(IsMacEnabled)' == 'true'" />
+
+	<Target Name="BeforeCopyFilesToMacOutputDirectory" Condition="'$(IsMacEnabled)' == 'true'">
+		<MakeDir Directories="$(DeviceSpecificIntermediateOutputPath)CopyFilesToMac" />
+
+		<ItemGroup>
+			<_CopyReferenceCopyLocalPathsOutput Include="@(ReferenceCopyLocalPaths -> '$(DeviceSpecificIntermediateOutputPath)CopyFilesToMac\%(FileName)%(Extension).ReferenceCopyLocalPaths.stamp')" />
+			<_CopyDebugSymbolsToMacOutput Include="@(DebugSymbolsProjectOutputGroupOutput -> '$(DeviceSpecificIntermediateOutputPath)CopyFilesToMac\%(FileName)%(Extension).DebugSymbolsProjectOutputGroupOutput.stamp')" />
+			<_CopyItemsWithCopyToOutputDirectoryOutput Include="@(_SourceItemsToCopyToOutputDirectory -> '$(DeviceSpecificIntermediateOutputPath)CopyFilesToMac\%(FileName)%(Extension).SourceItemsToCopyToOutputDirectory.stamp')" />
+			<_CopyEmbeddedResourcesWithCultureOutput Include="@(EmbeddedResource -> '$(DeviceSpecificIntermediateOutputPath)CopyFilesToMac\%(Culture)\$(TargetName).resources.dll.EmbeddedResourcesWithCulture.stamp')"
+																							 Condition="'%(EmbeddedResource.WithCulture)' == 'true'" />
+			<_CopyNoneOutput Include="@(_NoneWithTargetPath -> '$(DeviceSpecificIntermediateOutputPath)CopyFilesToMac\%(FileName)%(Extension).NoneOutput.stamp')" />
+		</ItemGroup>
+	</Target>
+	
+	<Target Name="_ProcessSymbols"
+			DependsOnTargets="ResolveReferences;_ResolveAssemblies;_CollectPdbFiles;_ConvertPdbFiles;_CollectMdbFiles;_ReferenceSymbols" />
+
+	<ItemDefinitionGroup>
+		<ReferenceCopyLocalPaths>
+			<DestinationSubDirectory />
+			<FrameworkFile />
+			<ResolvedFrom />
+		</ReferenceCopyLocalPaths>
+	</ItemDefinitionGroup>
+
+	<Target Name="_ResolveAssemblies">
+		<!--- Remove the ImplicitlyExpandDesignTimeFacades assemblies. We have already build the app there are not required for packaging  -->
+		<ItemGroup>
+			<ReferenceCopyLocalPaths Condition="'%(FrameworkFile)' == ''">
+				<FrameworkFile>$([System.String]::new('%(ResolvedFrom)').StartsWith('$(FrameworkPathOverride)').ToString().ToLowerInvariant())</FrameworkFile>
+			</ReferenceCopyLocalPaths>
+			<ResolvedAssemblies Include="@(ReferenceCopyLocalPaths)"
+                          Condition="'%(Extension)' == '.dll' And
+                                     '%(ResolvedFrom)' != 'ImplicitlyExpandDesignTimeFacades' And 
+                                     '%(FrameworkFile)' != 'true' And 
+                                     '%(Filename)' != 'mscorlib'" />
+			<ResolvedAssemblies Include="$(TargetPath)" />
+		</ItemGroup>
+	</Target>
+
+	<Target Name="_CollectPdbFiles"
+			Inputs="@(ResolvedAssemblies->'%(RootDir)%(Directory)%(Filename).pdb')"
+			Outputs="@(ResolvedAssemblies->'%(RootDir)%(Directory)%(Filename)%(Extension).mdb')">
+		<CollectPdbFiles
+				ResolvedAssemblies="@(ResolvedAssemblies->'%(RootDir)%(Directory)%(Filename).pdb')">
+			<Output TaskParameter="DllPdbFiles" ItemName="_ResolvedDllPdbFiles" />
+			<Output TaskParameter="ExePdbFiles" ItemName="_ResolvedExePdbFiles" />
+			<Output TaskParameter="PortablePdbFiles" ItemName="_ResolvedPortablePdbFiles" />
+		</CollectPdbFiles>
+	</Target>
+
+	<Target Name="_ConvertPdbFiles" DependsOnTargets="_ConvertDllPdbFiles;_ConvertExePdbFiles" />
+	
+	<Target Name="_ConvertDllPdbFiles"
+			Inputs="@(_ResolvedDllPdbFiles)"
+			Outputs="@(_ResolvedDllPdbFiles->'%(RootDir)%(Directory)%(Filename).dll.mdb')"
+			DependsOnTargets="_CollectPdbFiles">
+		<ConvertDebuggingFiles Files="@(_ResolvedDllPdbFiles)" />
+	</Target>
+
+	<Target Name="_ConvertExePdbFiles"
+			Inputs="@(_ResolvedExePdbFiles)"
+			Outputs="@(_ResolvedExePdbFiles->'%(RootDir)%(Directory)%(Filename).exe.mdb')"
+			DependsOnTargets="_CollectPdbFiles">
+		<ConvertDebuggingFiles Files="@(_ResolvedExePdbFiles)" />
+	</Target>
+
+	<Target Name="_CollectMdbFiles"
+			Inputs="@(ResolvedAssemblies->'%(RootDir)%(Directory)%(Filename)%(Extension)')"
+			Outputs="@(ResolvedAssemblies->'%(RootDir)%(Directory)%(Filename)%(Extension).mdb')">
+		<ItemGroup>
+			<_CandidateMdbFiles Include="@(ResolvedAssemblies->'%(RootDir)%(Directory)%(Filename)%(Extension).mdb')" />
+			<_ResolvedMdbFiles Include="@(_CandidateMdbFiles)" Condition="Exists('%(FullPath)')" />
+		</ItemGroup>
+	</Target>
+
+	<Target Name="_ReferenceSymbols"
+			DependsOnTargets="_CollectPdbFiles;_ConvertPdbFiles;_CollectMdbFiles">
+		<ItemGroup>
+			<ReferenceCopyLocalPaths Include="@(_ResolvedMdbFiles)" />
+		</ItemGroup>
+	</Target>
+
+	<ItemDefinitionGroup>
+		<_CopyFilesToBuildServer>
+			<TargetPath />
+		</_CopyFilesToBuildServer>
+	</ItemDefinitionGroup>
+
+	<Target Name="CopyReferenceCopyLocalPathsToMac" Condition="'$(IsMacEnabled)' == 'true'" Inputs="@(ReferenceCopyLocalPaths)" Outputs="@(_CopyReferenceCopyLocalPathsOutput)" >
+		<ItemGroup>
+			<_CopyReferenceCopyLocalPaths Include="@(ReferenceCopyLocalPaths)" Condition="'@(ReferenceCopyLocalPaths)' != '' And '%(Filename)' != 'mscorlib'">
+				<TargetPath>$(DeviceSpecificOutputPath)%(DestinationSubDirectory)%(Filename)%(Extension)</TargetPath>
+			</_CopyReferenceCopyLocalPaths>
+			<FileWrites Include="@(_CopyReferenceCopyLocalPathsOutput)" />
+		</ItemGroup>
+
+		<CopyFilesToBuildServer SessionId="$(BuildSessionId)" Files="@(_CopyReferenceCopyLocalPaths)" />
+
+		<Touch AlwaysCreate="true"	Files="@(_CopyReferenceCopyLocalPathsOutput)" />
+	</Target>
+
+	<Target Name="CopyDebugSymbolsToMac" Condition="'$(IsMacEnabled)' == 'true'" Inputs="@(DebugSymbolsProjectOutputGroupOutput)" Outputs="@(_CopyDebugSymbolsToMacOutput)" >
+		<ItemGroup>
+			<_CopyDebugSymbolsToMac Include="@(DebugSymbolsProjectOutputGroupOutput -> '%(FinalOutputPath)')">
+				<TargetPath>$(DeviceSpecificOutputPath)%(Filename)%(Extension)</TargetPath>
+			</_CopyDebugSymbolsToMac>
+			<FileWrites Include="@(_CopyDebugSymbolsToMacOutput)" />
+		</ItemGroup>
+
+		<CopyFilesToBuildServer SessionId="$(BuildSessionId)" Files="@(_CopyDebugSymbolsToMac)" />
+
+		<Touch AlwaysCreate="true" Files="@(_CopyDebugSymbolsToMacOutput)" />
+	</Target>
+
+	<Target Name="CopyItemsWithCopyToOutputDirectoryToMac" Condition="'$(IsMacEnabled)' == 'true'" Inputs="@(_SourceItemsToCopyToOutputDirectory);" Outputs="@(_CopyItemsWithCopyToOutputDirectoryOutput)" >
+		<ItemGroup>
+			<_CopyItemsWithCopyToOutputDirectory Include="@(_SourceItemsToCopyToOutputDirectory)" >
+				<TargetPath>$(DeviceSpecificOutputPath)%(TargetPath)</TargetPath>
+			</_CopyItemsWithCopyToOutputDirectory>
+			<FileWrites Include="@(_CopyItemsWithCopyToOutputDirectoryOutput)" />
+		</ItemGroup>
+
+		<CopyFilesToBuildServer SessionId="$(BuildSessionId)" Files="@(_CopyItemsWithCopyToOutputDirectory)" />
+
+		<Touch AlwaysCreate="true" Files="@(_CopyItemsWithCopyToOutputDirectoryOutput)" />
+	</Target>
+
+	<Target Name="CopyItemsWithCopyToOutputDirectoryAlwaysToMac" Condition="'$(IsMacEnabled)' == 'true'" >
+		<ItemGroup>
+			<_CopySourceItemsToCopyToOutputDirectoryAlways Include="@(_SourceItemsToCopyToOutputDirectoryAlways)">
+				<TargetPath>$(DeviceSpecificOutputPath)%(TargetPath)</TargetPath>
+			</_CopySourceItemsToCopyToOutputDirectoryAlways>
+		</ItemGroup>
+
+		<CopyFilesToBuildServer SessionId="$(BuildSessionId)" Files="@(_CopySourceItemsToCopyToOutputDirectoryAlways)" />
+	</Target>
+
+	<Target Name="CopyEmbeddedResourcesWithCultureToMac" Condition="'$(IsMacEnabled)' == 'true'" Inputs="@(EmbeddedResource -> '$(OutDir)%(Culture)\$(TargetName).resources.dll')" Outputs="@(_CopyEmbeddedResourcesWithCultureOutput)" >
+		<ItemGroup>
+			<_CopyEmbeddedResourcesWithCulture Include="@(EmbeddedResource -> '$(OutDir)%(Culture)\$(TargetName).resources.dll')" Condition="'%(EmbeddedResource.WithCulture)' == 'true'">
+				<TargetPath>$(OutDir)%(EmbeddedResource.Culture)\$(TargetName).resources.dll</TargetPath>
+			</_CopyEmbeddedResourcesWithCulture>
+			<FileWrites Include="@(_CopyEmbeddedResourcesWithCultureOutput)" />
+		</ItemGroup>
+
+		<CopyFilesToBuildServer SessionId="$(BuildSessionId)" Files="@(_CopyEmbeddedResourcesWithCulture)" />
+
+		<MakeDir Directories="@(EmbeddedResource -> '$(DeviceSpecificIntermediateOutputPath)CopyFilesToMac\%(Culture)')" />
+		<Touch AlwaysCreate="true" Files="@(_CopyEmbeddedResourcesWithCultureOutput)" />
+	</Target>
+
+	<Target Name="CopyNoneToMac" Condition="'$(IsMacEnabled)' == 'true'" Inputs="@(_NoneWithTargetPath);" Outputs="@(_CopyNoneOutput)" >
+		<ItemGroup>
+			<!-- For backwards compatibility, we also copy the None items with CopyToOutput to the root build directory in the mac -->
+			<_NoneWithCopyToOutputDirectory Include="@(_NoneWithTargetPath)" Condition="'%(_NoneWithTargetPath.CopyToOutputDirectory)' != ''" />
+			<FileWrites Include="@(_CopyNoneOutput)" />
+		</ItemGroup>
+
+		<CopyFilesToBuildServer SessionId="$(BuildSessionId)" Files="@(_NoneWithTargetPath)" />
+
+		<Touch AlwaysCreate="true" Files="@(_CopyNoneOutput)" />
+	</Target>
+
+	<PropertyGroup>
+		<XamarinAppleSdkTargetsImported>true</XamarinAppleSdkTargetsImported>
+		<FrameworkPathOverride  Condition="'$(TargetFrameworkRootPath)' != ''" >$(TargetFrameworkRootPath)$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)</FrameworkPathOverride>
+	</PropertyGroup>
+
+	<!-- Allows providing Xamarin SDK-specific target overrides -->
+	<Import Project="Xamarin.Sdk.targets" Condition="'$(XamarinSdkTargetsImported)' != 'true' And Exists('Xamarin.Sdk.targets')"/>
+</Project>
