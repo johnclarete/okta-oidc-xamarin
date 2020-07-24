@@ -1,0 +1,23 @@
+test_suites:
+    - name: XamarinCommonBuild
+      script_name: build-common
+      script_path: /root/okta/okta-oidc-xamarin
+      sort_order: '1'
+      timeout: '15'
+      criteria: MERGE
+      queue_name: small
+    - name: XamarinAndroidBuild
+      script_name: build-android
+      script_path: /root/okta/okta-oidc-xamarin
+      sort_order: '2'
+      timeout: '15'
+      criteria: MERGE
+      queue_name: small
+    - name: XamariniOSBuild
+      script_name: build-iOS
+      script_path: /root/okta/okta-oidc-xamarin
+      sort_order: '3'
+      timeout: '15'
+      criteria: MERGE
+      queue_name: small
+   

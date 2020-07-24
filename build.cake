@@ -1,16 +1,19 @@
 // Arguments.
-var target = Argument("target", "Default");
+var target = Argument("target", "DefaultTarget");
 var configuration = Argument("configuration", "Release");
 
 // Define directories.
 var solutionFile = GetFiles("./Okta.Xamarin/*.sln").First();
 
-// Android and iOS.
-var androidProject = GetFiles("./Okta.Xamarin/Okta.Xamarin.Android/*.csproj").First();
-var iOSProject = GetFiles("./Okta.Xamarin/Okta.Xamarin.iOS/*.csproj").First();
+// Common, Android and iOS.
+var commonProject = GetFiles("./Okta.Xamarin/Okta.Xamarin/Okta.Xamarin.csproj").First();
+var androidProject = GetFiles("./Okta.Xamarin/Okta.Xamarin.Android/Okta.Xamarin.Android.csproj").First();
+var iOSProject = GetFiles("./Okta.Xamarin/Okta.Xamarin.iOS/Okta.Xamarin.iOS.csproj").First();
 
 // Output folders.
 var artifactsDirectory = Directory(System.IO.Path.Combine(Environment.CurrentDirectory, "artifacts"));
+var solutionOutputDirectory = Directory(System.IO.Path.Combine(artifactsDirectory, "SolutionOutput")); 
+var commonOutputDirectory = Directory(System.IO.Path.Combine(artifactsDirectory, "Common"));
 var androidOutputDirectory = Directory(System.IO.Path.Combine(artifactsDirectory, "Android"));
 var iOSOutputDirectory = Directory(System.IO.Path.Combine(artifactsDirectory, "iOS"));
 
@@ -20,10 +23,8 @@ var testsProject = GetFiles("./Okta.Xamarin/Okta.Xamarin.Test/*.csproj").First()
 Task("Clean")
     .Does(() => 
     {
-        Console.WriteLine("Cleaning directory {0}", artifactsDirectory);
         CleanDirectory(artifactsDirectory);
 
-        Console.WriteLine("Calling DotNetBuild Target=Clean");
         MSBuild(solutionFile, settings => settings
             .SetConfiguration(configuration)
             .WithTarget("Clean")
@@ -35,6 +36,32 @@ Task("Restore-Packages")
     {
         NuGetRestore(solutionFile);
     });
+
+Task("Build-Solution")
+    .IsDependentOn("Restore-Packages")
+    .Does(() =>
+    { 	
+        MSBuild(solutionFile, settings =>
+            settings
+                .SetConfiguration(configuration)  
+                .WithProperty("OutputPath", solutionOutputDirectory)         
+                .WithProperty("DebugSymbols", "false")
+                .WithProperty("TreatWarningsAsErrors", "false")
+                .SetVerbosity(Verbosity.Minimal));
+    });    
+
+Task("Build-Common")
+    .IsDependentOn("Restore-Packages")
+    .Does(() =>
+    { 	
+        MSBuild(commonProject, settings =>
+            settings
+                .SetConfiguration(configuration)  
+                .WithProperty("OutputPath", commonOutputDirectory)
+                .WithProperty("DebugSymbols", "false")
+                .WithProperty("TreatWarningsAsErrors", "false")
+                .SetVerbosity(Verbosity.Minimal));
+    }); 
 
 Task("Build-Android")
     .IsDependentOn("Restore-Packages")
@@ -75,10 +102,25 @@ Task("Run-Tests")
             });
     });
 
-Task("Default")
+Task("CommonTarget")
+    .IsDependentOn("Clean")
+    .IsDependentOn("Build-Common")
+    .IsDependentOn("Run-Tests");
+
+Task("AndroidTarget")
     .IsDependentOn("Clean")
     .IsDependentOn("Build-Android")
+    .IsDependentOn("Run-Tests");
+
+Task("iOSTarget")
+    .IsDependentOn("Clean")
     .IsDependentOn("Build-iOS")
     .IsDependentOn("Run-Tests");
 
+Task("DefaultTarget")
+    .IsDependentOn("Clean")
+    .IsDependentOn("Build-Solution")
+    .IsDependentOn("Run-Tests");
+
+Console.WriteLine("Cake target is " + target);
 RunTarget(target);
